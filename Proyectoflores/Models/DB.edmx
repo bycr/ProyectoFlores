@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="proyectofloresModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="finca">
+          <Key>
+            <PropertyRef Name="idfinca" />
+          </Key>
+          <Property Name="idfinca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombrefinca" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ubicacionf" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="invernadero">
+          <Key>
+            <PropertyRef Name="idinvernadero" />
+          </Key>
+          <Property Name="idinvernadero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numeroinvernadero" Type="int" Nullable="false" />
+          <Property Name="idfinca" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_idfinca">
+          <End Role="finca" Type="Self.finca" Multiplicity="1" />
+          <End Role="invernadero" Type="Self.invernadero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="finca">
+              <PropertyRef Name="idfinca" />
+            </Principal>
+            <Dependent Role="invernadero">
+              <PropertyRef Name="idfinca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="proyectofloresModelStoreContainer">
+          <EntitySet Name="finca" EntityType="Self.finca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="invernadero" EntityType="Self.invernadero" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_idfinca" Association="Self.fk_idfinca">
+            <End Role="finca" EntitySet="finca" />
+            <End Role="invernadero" EntitySet="invernadero" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="proyectofloresModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="finca">
+          <Key>
+            <PropertyRef Name="idfinca" />
+          </Key>
+          <Property Name="idfinca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombrefinca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ubicacionf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="invernadero" Relationship="proyectofloresModel.fk_idfinca" FromRole="finca" ToRole="invernadero" />
+        </EntityType>
+        <EntityContainer Name="proyectofloresEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="finca" EntityType="Self.finca" />
+          <EntitySet Name="invernadero" EntityType="proyectofloresModel.invernadero" />
+          <AssociationSet Name="fk_idfinca" Association="proyectofloresModel.fk_idfinca">
+            <End Role="finca" EntitySet="finca" />
+            <End Role="invernadero" EntitySet="invernadero" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="invernadero">
+          <Key>
+            <PropertyRef Name="idinvernadero" />
+          </Key>
+          <Property Name="idinvernadero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numeroinvernadero" Type="Int32" Nullable="false" />
+          <Property Name="idfinca" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="finca" Relationship="proyectofloresModel.fk_idfinca" FromRole="invernadero" ToRole="finca" />
+        </EntityType>
+        <Association Name="fk_idfinca">
+          <End Type="proyectofloresModel.finca" Role="finca" Multiplicity="1" />
+          <End Type="proyectofloresModel.invernadero" Role="invernadero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="finca">
+              <PropertyRef Name="idfinca" />
+            </Principal>
+            <Dependent Role="invernadero">
+              <PropertyRef Name="idfinca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="proyectofloresModelStoreContainer" CdmEntityContainer="proyectofloresEntities">
+          <EntitySetMapping Name="finca">
+            <EntityTypeMapping TypeName="proyectofloresModel.finca">
+              <MappingFragment StoreEntitySet="finca">
+                <ScalarProperty Name="idfinca" ColumnName="idfinca" />
+                <ScalarProperty Name="nombrefinca" ColumnName="nombrefinca" />
+                <ScalarProperty Name="ubicacionf" ColumnName="ubicacionf" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invernadero">
+            <EntityTypeMapping TypeName="proyectofloresModel.invernadero">
+              <MappingFragment StoreEntitySet="invernadero">
+                <ScalarProperty Name="idfinca" ColumnName="idfinca" />
+                <ScalarProperty Name="numeroinvernadero" ColumnName="numeroinvernadero" />
+                <ScalarProperty Name="idinvernadero" ColumnName="idinvernadero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

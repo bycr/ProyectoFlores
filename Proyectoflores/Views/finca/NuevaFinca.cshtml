@@ -1,0 +1,34 @@
+﻿@model Proyectoflores.Models.ViewModelsFinca.FincaViewModel
+@{
+    ViewBag.Title = "Crear nueva finca";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("NuevaFinca", "Finca", FormMethod.Post))
+{
+    <div class="container">
+        <div class="form-group">
+
+            <div class="col-md-12 text-center">
+                <b> <label> Datos de la finca</label> </b>
+            </div>
+
+            <div class="col-md-12 text-center">
+                <div class="col-md-6 text-center">
+                    <b><label>Nombre de la Finca </label></b>
+                    @Html.TextBoxFor(d => d.Nombrefinca, "", new { @class = "form-control" })
+                </div>
+                <div class="col-md-6 text-center">
+                    <b><label>Ubicación de la finca</label></b>
+                    @Html.TextBoxFor(d => d.Ubicacion, "", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align:right">
+        <input value="Guardar" class="btn btn-primary" type="submit" />
+    </div>
+}

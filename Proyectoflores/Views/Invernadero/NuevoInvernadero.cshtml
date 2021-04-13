@@ -1,0 +1,25 @@
+﻿@model Proyectoflores.Models.invernadero
+@{
+    ViewBag.Title = "Registrar Nuevo Invernadero";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("EditarInvernadero", "Invernadero", FormMethod.Post))
+{   
+    <div class="col-md-12 text-center">    
+        <div class="col-md-6 text-center">
+            @Html.DisplayNameFor(d => d.numeroinvernadero)
+            @Html.TextBoxFor(d => d.numeroinvernadero, "", new { @class = "form-control" })
+        </div>
+        <div class="col-md-6 text-center">
+            @Html.DisplayNameFor(d => d.idfinca)
+            @Html.DropDownListFor(d => d.idfinca, new SelectList(Model.FincaCollection, "Idfinca", "Nombrefinca"), "Seleccione finca", new {@class = "form-control" })
+        </div>
+    </div>
+
+    <div style="text-align:right">
+        <input value="Guardar" class="btn btn-primary" type="submit" />
+    </div>
+}
