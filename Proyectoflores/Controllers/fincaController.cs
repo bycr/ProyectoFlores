@@ -47,8 +47,7 @@ namespace Proyectoflores.Controllers
                         var oFinca = new finca();
 
                         oFinca.nombrefinca = model.Nombrefinca;
-                        oFinca.ubicacionf = model.Ubicacion;
-                        
+                        oFinca.ubicacionf = model.Ubicacion;                 
 
                         db.finca.Add(oFinca);
                         db.SaveChanges();

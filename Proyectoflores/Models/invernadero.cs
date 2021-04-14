@@ -19,6 +19,7 @@ namespace Proyectoflores.Models
         public int idinvernadero { get; set; }
         [DisplayName("Numero de invernadero")]
         public int numeroinvernadero { get; set; }
+        [DisplayName("Id finca")]
         public int idfinca { get; set; }
     
         public virtual finca finca { get; set; }

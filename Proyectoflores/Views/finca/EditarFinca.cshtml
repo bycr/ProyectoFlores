@@ -6,10 +6,10 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("NuevaFinca", "Finca", FormMethod.Post))
+@using (Html.BeginForm("EditarFinca", "Finca", FormMethod.Post))
 {
+    @Html.HiddenFor(d => d.Idfinca)
     <div class="container">
-        @Html.HiddenFor(d => d.Idfinca)
         <div class="form-group">
 
             <div class="col-md-12 text-center">
@@ -18,11 +18,11 @@
 
             <div class="col-md-12 text-center">
                 <div class="col-md-6 text-center">
-                    <b><label>Nombre de la Finca </label></b>
+                    @Html.DisplayNameFor(d => d.Nombrefinca)
                     @Html.TextBoxFor(d => d.Nombrefinca, "", new { @class = "form-control" })
                 </div>
                 <div class="col-md-6 text-center">
-                    <b><label>Ubicación de la finca</label></b>
+                    @Html.DisplayNameFor(d => d.Ubicacion)
                     @Html.TextBoxFor(d => d.Ubicacion, "", new { @class = "form-control" })
                 </div>
             </div>
