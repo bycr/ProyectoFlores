@@ -93,7 +93,6 @@ namespace Proyectoflores.Controllers
                         oFinca.nombrefinca = model.Nombrefinca;
                         oFinca.ubicacionf = model.Ubicacion;
 
-
                         db.Entry(oFinca).State = System.Data.Entity.EntityState.Modified;
                         db.SaveChanges();
                     }
