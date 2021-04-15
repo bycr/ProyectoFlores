@@ -6,16 +6,18 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("EditarInvernadero", "Invernadero", FormMethod.Post))
-{   
-    <div class="col-md-12 text-center">    
+@*EditarInvernadero nombre metodo *@
+@*Invernadero nombre del controlador *@
+@using (Html.BeginForm("NuevoInvernadero", "Invernadero", FormMethod.Post))
+{
+    <div class="col-md-12 text-center">
         <div class="col-md-6 text-center">
             @Html.DisplayNameFor(d => d.numeroinvernadero)
             @Html.TextBoxFor(d => d.numeroinvernadero, "", new { @class = "form-control" })
         </div>
         <div class="col-md-6 text-center">
             @Html.DisplayNameFor(d => d.idfinca)
-            @Html.DropDownListFor(d => d.idfinca, new SelectList(Model.FincaCollection, "Idfinca", "Nombrefinca"), "Seleccione finca", new {@class = "form-control" })
+            @Html.DropDownListFor(d => d.idfinca, new SelectList(Model.FincaCollection, "Idfinca", "Nombrefinca"), "Seleccione finca", new { @class = "form-control" })
         </div>
     </div>
 
