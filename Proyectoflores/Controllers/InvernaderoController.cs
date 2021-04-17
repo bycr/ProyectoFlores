@@ -32,19 +32,20 @@ namespace Proyectoflores.Controllers
             return View(lst);
         }
 
-        public ActionResult NuevoInvernadero()
+        public ActionResult NuevoInvernadero(int id = 0)
         {
-            Models.invernadero mod = new Models.invernadero();
+            invernadero mod = new invernadero();
             using (proyectofloresEntities db = new proyectofloresEntities())
             {
-                
+                if (id != 0)
+                mod = db.invernadero.Where(x => x.idfinca == id).FirstOrDefault();
                 mod.FincaCollection = db.finca.ToList<finca>();
             }
             return View(mod);
         }
 
         [HttpPost]
-        public ActionResult NuevoInvernadero(Models.invernadero model)
+        public ActionResult NuevoInvernadero(invernadero model)
         {
 
             try
@@ -53,7 +54,7 @@ namespace Proyectoflores.Controllers
                 {
                     using (proyectofloresEntities db = new proyectofloresEntities())
                     {
-                        var oInvernadero = new Models.invernadero();
+                        var oInvernadero = new invernadero();
 
                         oInvernadero.numeroinvernadero = model.numeroinvernadero;
                         oInvernadero.idfinca = model.idfinca;
@@ -75,15 +76,18 @@ namespace Proyectoflores.Controllers
         }
 
         //editar invernaderos
-        public ActionResult EditarInvernadero(int Id)
+        public ActionResult EditarInvernadero(int Id, int id)
         {
             invernadero mod = new invernadero();
             using (proyectofloresEntities db = new proyectofloresEntities())
-            {
+            {   
                 var oInvernadero = db.invernadero.Find(Id);
                 mod.numeroinvernadero = oInvernadero.numeroinvernadero;
-                //mod.idfinca = oInvernadero.idfinca;
-                mod.FincaCollection = db.finca.ToList<finca>();
+
+                if (id != 0)
+                    mod = db.invernadero.Where(x => x.idfinca == id).FirstOrDefault();
+                    mod.FincaCollection = db.finca.ToList<finca>();
+
             }
             return View(mod);
         }
