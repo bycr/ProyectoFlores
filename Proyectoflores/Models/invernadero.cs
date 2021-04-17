@@ -12,14 +12,19 @@ namespace Proyectoflores.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class invernadero
     {
         public int idinvernadero { get; set; }
-        [DisplayName("Numero de invernadero")]
+
+        [Required]
+        [Display(Name = "Numero de invernadero")]       
+        [RegularExpression("(^[0-9]+$)", ErrorMessage = "Solo se permiten números")]
         public int numeroinvernadero { get; set; }
-        [DisplayName("Id finca")]
+        [Required]
+        [Display(Name = "Finca")]
         public int idfinca { get; set; }
     
         public virtual finca finca { get; set; }

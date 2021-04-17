@@ -11,10 +11,12 @@ namespace Proyectoflores.Models.ViewModelsFinca
     {
         public int Idfinca { get; set; }
         [Required]
-        [DisplayName("Nombre de la finca")]
+        [StringLength(50)]
+        [Display(Name = "Nombre de la finca")]
         public string Nombrefinca { get; set; }
         [Required]
-        [DisplayName("Ubicación")]
+        [Display(Name = "Ubicación")]
+        [StringLength(50)]
         public string Ubicacion { get; set; }
     }
 }

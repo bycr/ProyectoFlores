@@ -4,20 +4,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2 class="text-center">@ViewBag.Title</h2>
 
 @*EditarInvernadero nombre metodo *@
 @*Invernadero nombre del controlador *@
 @using (Html.BeginForm("NuevoInvernadero", "Invernadero", FormMethod.Post))
 {
-    <div class="col-md-12 text-center">
-        <div class="col-md-6 text-center">
-            @Html.DisplayNameFor(d => d.numeroinvernadero)
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <b>@Html.LabelFor(d => d.numeroinvernadero)</b> 
             @Html.TextBoxFor(d => d.numeroinvernadero, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.numeroinvernadero, null, new { @class = "red"})
         </div>
-        <div class="col-md-6 text-center">
-            @Html.DisplayNameFor(d => d.idfinca)
+        <div class="col-md-6">
+            <b>@Html.LabelFor(d => d.idfinca)</b>          
             @Html.DropDownListFor(d => d.idfinca, new SelectList(Model.FincaCollection, "Idfinca", "Nombrefinca"), "Seleccione finca", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.idfinca, null, new { @class = "red" })
         </div>
     </div>
 

@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2 class="text-center">@ViewBag.Title</h2>
 
 @*EditarFinca nombre metodo *@
 @*Finca nombre del controlador *@
@@ -14,17 +14,13 @@
     <div class="container">
         <div class="form-group">
 
-            <div class="col-md-12 text-center">
-                <b> <label> Datos de la finca</label> </b>
-            </div>
-
-            <div class="col-md-12 text-center">
-                <div class="col-md-6 text-center">
-                    @Html.DisplayNameFor(d => d.Nombrefinca)
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <b>@Html.DisplayNameFor(d => d.Nombrefinca)</b> 
                     @Html.TextBoxFor(d => d.Nombrefinca, "", new { @class = "form-control" })
                 </div>
-                <div class="col-md-6 text-center">
-                    @Html.DisplayNameFor(d => d.Ubicacion)
+                <div class="col-md-6">
+                    <b>@Html.DisplayNameFor(d => d.Ubicacion)</b> 
                     @Html.TextBoxFor(d => d.Ubicacion, "", new { @class = "form-control" })
                 </div>
             </div>
