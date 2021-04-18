@@ -2,6 +2,17 @@
     $('#dvGridWith').width($('#dvScreenWidth').width());
 });
 
+
+function ValidateNumber(e) {
+    var evt = (e) ? e : window.event;
+    var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+    }
+return true;
+};
+    
+
 function validarsolonum(evt) {
     if (window.event) {//asignamos el valor de la tecla a keynum
         keynum = evt.keyCode; //IE

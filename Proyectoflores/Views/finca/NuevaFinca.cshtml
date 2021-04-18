@@ -4,28 +4,57 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script type="text/javascript" src="~/Scripts/Scripts.js"></script>
+<script type="text/javascript">
+    function ValidateNumber(e) {
+        var evt = (e) ? e : window.event;
+        var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    };
+
+    function checkespacio(e) {
+        tecla = (document.all) ? e.keyCode : e.which;
+
+        //Tecla de retroceso para borrar, siempre la permite
+        if (tecla == 8) {
+            return true;
+        }
+
+        // Patron de entrada, en este caso solo acepta numeros y letras
+        patron = /^[a-zA-Z0-9 ]*$/gm;
+        tecla_final = String.fromCharCode(tecla);
+        return patron.test(tecla_final);
+    };
+  
+</script>
+
+
 <h2 class="text-center">@ViewBag.Title</h2>
 
 @*NuevaFinca nombre metodo *@
 @*Finca nombre del controlador *@
 @using (Html.BeginForm("NuevaFinca", "Finca", FormMethod.Post))
 {
-    <div class="container">
-        <div class="form-group">
+<div class="container">
+    <div class="form-group">
 
-            <div class="col-md-12">
-                <div class="col-md-6">
-                    @Html.LabelFor(d => d.Nombrefinca)
-                    @Html.TextBoxFor(d => d.Nombrefinca, "", new { @class = "form-control" })
-                </div>
-                <div class="col-md-6">
-                    @Html.LabelFor(d => d.Ubicacion)
-                    @Html.TextBoxFor(d => d.Ubicacion, "", new { @class = "form-control" })
-                </div>
+        <div class="col-md-12">
+            <div class="col-md-6">
+                @Html.LabelFor(d => d.Nombrefinca)
+                @Html.TextBoxFor(d => d.Nombrefinca, new { onkeydown = "return checkespacio(event);", onkeyup = "this.value = this.value.toUpperCase();" ,@class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Nombrefinca)
+
+            </div>
+            <div class="col-md-6">
+                @Html.LabelFor(d => d.Ubicacion)
+                @Html.TextBoxFor(d => d.Ubicacion, new { onkeydown = "return checkespacio(event);", onkeyup = "this.value = this.value.toUpperCase();", @class = "form-control" })
             </div>
         </div>
     </div>
+    <br />
+</div>
 
     <div style="text-align:right">
         <input value="Guardar" class="btn btn-primary" type="submit" />
