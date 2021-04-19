@@ -21,6 +21,47 @@
           <Property Name="numeroinvernadero" Type="int" Nullable="false" />
           <Property Name="idfinca" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="modulo">
+          <Key>
+            <PropertyRef Name="idmodulo" />
+          </Key>
+          <Property Name="idmodulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="operaciones">
+          <Key>
+            <PropertyRef Name="idoperacion" />
+          </Key>
+          <Property Name="idoperacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idmodulo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="idrol" />
+          </Key>
+          <Property Name="idrol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="rol_operacion">
+          <Key>
+            <PropertyRef Name="idrolope" />
+          </Key>
+          <Property Name="idrolope" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idrol" Type="int" Nullable="false" />
+          <Property Name="idoperacion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="cedula" />
+          </Key>
+          <Property Name="cedula" Type="int" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombres" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idrol" Type="int" Nullable="false" />
+          <Property Name="idfinca" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="fk_idfinca">
           <End Role="finca" Type="Self.finca" Multiplicity="1" />
           <End Role="invernadero" Type="Self.invernadero" Multiplicity="*" />
@@ -33,12 +74,97 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_idfinca2">
+          <End Role="finca" Type="Self.finca" Multiplicity="1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="finca">
+              <PropertyRef Name="idfinca" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idfinca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idmodulo">
+          <End Role="modulo" Type="Self.modulo" Multiplicity="1" />
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulo">
+              <PropertyRef Name="idmodulo" />
+            </Principal>
+            <Dependent Role="operaciones">
+              <PropertyRef Name="idmodulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idoperacion">
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operaciones">
+              <PropertyRef Name="idoperacion" />
+            </Principal>
+            <Dependent Role="rol_operacion">
+              <PropertyRef Name="idoperacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idrol">
+          <End Role="rol" Type="Self.rol" Multiplicity="1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="idrol" />
+            </Principal>
+            <Dependent Role="rol_operacion">
+              <PropertyRef Name="idrol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rol">
+          <End Role="rol" Type="Self.rol" Multiplicity="1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="idrol" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idrol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="proyectofloresModelStoreContainer">
           <EntitySet Name="finca" EntityType="Self.finca" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="invernadero" EntityType="Self.invernadero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="modulo" EntityType="Self.modulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="operaciones" EntityType="Self.operaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rol" EntityType="Self.rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rol_operacion" EntityType="Self.rol_operacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_idfinca" Association="Self.fk_idfinca">
             <End Role="finca" EntitySet="finca" />
             <End Role="invernadero" EntitySet="invernadero" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idfinca2" Association="Self.fk_idfinca2">
+            <End Role="finca" EntitySet="finca" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idmodulo" Association="Self.fk_idmodulo">
+            <End Role="modulo" EntitySet="modulo" />
+            <End Role="operaciones" EntitySet="operaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idoperacion" Association="Self.fk_idoperacion">
+            <End Role="operaciones" EntitySet="operaciones" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idrol" Association="Self.fk_idrol">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rol" Association="Self.fk_rol">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -53,6 +179,7 @@
           <Property Name="nombrefinca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ubicacionf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="invernadero" Relationship="proyectofloresModel.fk_idfinca" FromRole="finca" ToRole="invernadero" />
+          <NavigationProperty Name="usuario" Relationship="proyectofloresModel.fk_idfinca2" FromRole="finca" ToRole="usuario" />
         </EntityType>
         <EntityContainer Name="proyectofloresEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="finca" EntityType="Self.finca" />
@@ -60,6 +187,31 @@
           <AssociationSet Name="fk_idfinca" Association="proyectofloresModel.fk_idfinca">
             <End Role="finca" EntitySet="finca" />
             <End Role="invernadero" EntitySet="invernadero" />
+          </AssociationSet>
+          <EntitySet Name="modulo" EntityType="proyectofloresModel.modulo" />
+          <EntitySet Name="operaciones" EntityType="proyectofloresModel.operaciones" />
+          <EntitySet Name="rol" EntityType="proyectofloresModel.rol" />
+          <EntitySet Name="rol_operacion" EntityType="proyectofloresModel.rol_operacion" />
+          <EntitySet Name="usuario" EntityType="proyectofloresModel.usuario" />
+          <AssociationSet Name="fk_idfinca2" Association="proyectofloresModel.fk_idfinca2">
+            <End Role="finca" EntitySet="finca" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idmodulo" Association="proyectofloresModel.fk_idmodulo">
+            <End Role="modulo" EntitySet="modulo" />
+            <End Role="operaciones" EntitySet="operaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idoperacion" Association="proyectofloresModel.fk_idoperacion">
+            <End Role="operaciones" EntitySet="operaciones" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idrol" Association="proyectofloresModel.fk_idrol">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rol" Association="proyectofloresModel.fk_rol">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="invernadero">
@@ -80,6 +232,116 @@
             </Principal>
             <Dependent Role="invernadero">
               <PropertyRef Name="idfinca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="modulo">
+          <Key>
+            <PropertyRef Name="idmodulo" />
+          </Key>
+          <Property Name="idmodulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="operaciones" Relationship="proyectofloresModel.fk_idmodulo" FromRole="modulo" ToRole="operaciones" />
+        </EntityType>
+        <EntityType Name="operaciones">
+          <Key>
+            <PropertyRef Name="idoperacion" />
+          </Key>
+          <Property Name="idoperacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idmodulo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="modulo" Relationship="proyectofloresModel.fk_idmodulo" FromRole="operaciones" ToRole="modulo" />
+          <NavigationProperty Name="rol_operacion" Relationship="proyectofloresModel.fk_idoperacion" FromRole="operaciones" ToRole="rol_operacion" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="idrol" />
+          </Key>
+          <Property Name="idrol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="rol_operacion" Relationship="proyectofloresModel.fk_idrol" FromRole="rol" ToRole="rol_operacion" />
+          <NavigationProperty Name="usuario" Relationship="proyectofloresModel.fk_rol" FromRole="rol" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="rol_operacion">
+          <Key>
+            <PropertyRef Name="idrolope" />
+          </Key>
+          <Property Name="idrolope" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idrol" Type="Int32" Nullable="false" />
+          <Property Name="idoperacion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="operaciones" Relationship="proyectofloresModel.fk_idoperacion" FromRole="rol_operacion" ToRole="operaciones" />
+          <NavigationProperty Name="rol" Relationship="proyectofloresModel.fk_idrol" FromRole="rol_operacion" ToRole="rol" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="cedula" />
+          </Key>
+          <Property Name="cedula" Type="Int32" Nullable="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombres" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idrol" Type="Int32" Nullable="false" />
+          <Property Name="idfinca" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="finca" Relationship="proyectofloresModel.fk_idfinca2" FromRole="usuario" ToRole="finca" />
+          <NavigationProperty Name="rol" Relationship="proyectofloresModel.fk_rol" FromRole="usuario" ToRole="rol" />
+        </EntityType>
+        <Association Name="fk_idfinca2">
+          <End Type="proyectofloresModel.finca" Role="finca" Multiplicity="1" />
+          <End Type="proyectofloresModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="finca">
+              <PropertyRef Name="idfinca" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idfinca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idmodulo">
+          <End Type="proyectofloresModel.modulo" Role="modulo" Multiplicity="1" />
+          <End Type="proyectofloresModel.operaciones" Role="operaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulo">
+              <PropertyRef Name="idmodulo" />
+            </Principal>
+            <Dependent Role="operaciones">
+              <PropertyRef Name="idmodulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idoperacion">
+          <End Type="proyectofloresModel.operaciones" Role="operaciones" Multiplicity="1" />
+          <End Type="proyectofloresModel.rol_operacion" Role="rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operaciones">
+              <PropertyRef Name="idoperacion" />
+            </Principal>
+            <Dependent Role="rol_operacion">
+              <PropertyRef Name="idoperacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idrol">
+          <End Type="proyectofloresModel.rol" Role="rol" Multiplicity="1" />
+          <End Type="proyectofloresModel.rol_operacion" Role="rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="idrol" />
+            </Principal>
+            <Dependent Role="rol_operacion">
+              <PropertyRef Name="idrol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rol">
+          <End Type="proyectofloresModel.rol" Role="rol" Multiplicity="1" />
+          <End Type="proyectofloresModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="idrol" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idrol" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -104,6 +366,52 @@
                 <ScalarProperty Name="idfinca" ColumnName="idfinca" />
                 <ScalarProperty Name="numeroinvernadero" ColumnName="numeroinvernadero" />
                 <ScalarProperty Name="idinvernadero" ColumnName="idinvernadero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="modulo">
+            <EntityTypeMapping TypeName="proyectofloresModel.modulo">
+              <MappingFragment StoreEntitySet="modulo">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idmodulo" ColumnName="idmodulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="operaciones">
+            <EntityTypeMapping TypeName="proyectofloresModel.operaciones">
+              <MappingFragment StoreEntitySet="operaciones">
+                <ScalarProperty Name="idmodulo" ColumnName="idmodulo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idoperacion" ColumnName="idoperacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rol">
+            <EntityTypeMapping TypeName="proyectofloresModel.rol">
+              <MappingFragment StoreEntitySet="rol">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idrol" ColumnName="idrol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rol_operacion">
+            <EntityTypeMapping TypeName="proyectofloresModel.rol_operacion">
+              <MappingFragment StoreEntitySet="rol_operacion">
+                <ScalarProperty Name="idoperacion" ColumnName="idoperacion" />
+                <ScalarProperty Name="idrol" ColumnName="idrol" />
+                <ScalarProperty Name="idrolope" ColumnName="idrolope" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="proyectofloresModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="idfinca" ColumnName="idfinca" />
+                <ScalarProperty Name="idrol" ColumnName="idrol" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

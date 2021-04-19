@@ -27,5 +27,10 @@ namespace Proyectoflores.Models
     
         public virtual DbSet<finca> finca { get; set; }
         public virtual DbSet<invernadero> invernadero { get; set; }
+        public virtual DbSet<modulo> modulo { get; set; }
+        public virtual DbSet<operaciones> operaciones { get; set; }
+        public virtual DbSet<rol> rol { get; set; }
+        public virtual DbSet<rol_operacion> rol_operacion { get; set; }
+        public virtual DbSet<usuario> usuario { get; set; }
     }
 }

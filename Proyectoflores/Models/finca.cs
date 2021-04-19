@@ -18,6 +18,7 @@ namespace Proyectoflores.Models
         public finca()
         {
             this.invernadero = new HashSet<invernadero>();
+            this.usuario = new HashSet<usuario>();
         }
     
         public int idfinca { get; set; }
@@ -26,5 +27,7 @@ namespace Proyectoflores.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<invernadero> invernadero { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<usuario> usuario { get; set; }
     }
 }

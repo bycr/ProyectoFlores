@@ -156,6 +156,21 @@
     <Compile Include="Models\invernadero.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\modulo.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\operaciones.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\rol.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\rol_operacion.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usuario.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ViewModelInvernadero\InvernaderoViewModel.cs" />
     <Compile Include="Models\ViewModelInvernadero\ListInvernaderoViewModel.cs" />
     <Compile Include="Models\ViewModelsFinca\FincaViewModel.cs" />
