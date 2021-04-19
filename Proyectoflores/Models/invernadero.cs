@@ -19,5 +19,7 @@ namespace Proyectoflores.Models
         public int idfinca { get; set; }
     
         public virtual finca finca { get; set; }
+
+        public List<finca> FincaCollection { get; set; }
     }
 }
