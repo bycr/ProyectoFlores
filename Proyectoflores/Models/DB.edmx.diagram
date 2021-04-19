@@ -6,8 +6,19 @@
     <edmx:Diagrams>
       <Diagram DiagramId="4e518afe565a44099c2f4f0475baede8" Name="Diagram1">
         <EntityTypeShape EntityType="proyectofloresModel.finca" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="proyectofloresModel.invernadero" Width="1.5" PointX="4" PointY="1.5" />
+        <EntityTypeShape EntityType="proyectofloresModel.invernadero" Width="1.5" PointX="4.375" PointY="0.625" />
         <AssociationConnector Association="proyectofloresModel.fk_idfinca" />
+        <EntityTypeShape EntityType="proyectofloresModel.modulo" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="proyectofloresModel.operaciones" Width="1.5" PointX="3" PointY="4.875" />
+        <AssociationConnector Association="proyectofloresModel.fk_idmodulo" />
+        <EntityTypeShape EntityType="proyectofloresModel.rol" Width="1.5" PointX="0.5" PointY="11.5" />
+        <EntityTypeShape EntityType="proyectofloresModel.rol_operacion" Width="1.5" PointX="2.75" PointY="11.375" />
+        <EntityTypeShape EntityType="proyectofloresModel.usuario" Width="1.5" PointX="2.75" PointY="3.625" />
+        <AssociationConnector Association="proyectofloresModel.fk_idfinca2" />
+        <AssociationConnector Association="proyectofloresModel.fk_idmodulo" />
+        <AssociationConnector Association="proyectofloresModel.fk_idoperacion" />
+        <AssociationConnector Association="proyectofloresModel.fk_idrol" />
+        <AssociationConnector Association="proyectofloresModel.fk_rol" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
