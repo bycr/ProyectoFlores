@@ -1,0 +1,41 @@
+﻿@model List<Proyectoflores.Models.ViewModelUsuario.ListUsuarioViewModel>
+@{
+    ViewBag.Title = "Lista de Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row" style="text-align: right; padding:5px;">
+    <a href="~/Usuario/NuevoUsuario" class="btn btn-primary">Nuevo</a>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>Cedula</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Rol de usuario</th>
+                <th>Finca</th>
+                <th></th>
+            </tr>
+            @foreach (var oElemento in Model)
+            {
+                <tr>
+                    <td>@oElemento.cedula</td>
+                    <td>@oElemento.nombres</td>
+                    <td>@oElemento.apellidos</td>
+                    <td>@oElemento.idrol</td>
+                    <td>@oElemento.idfinca</td>
+                    <td>
+                        <a class="btn btn-primary" href="~/finca/EditarUsuario/@oElemento.cedula">Editar</a>
+                        <a class="btn btn-danger" href="~/finca/EliminarUsuario/@oElemento.cedula">Eliminar</a>
+                    </td>
+                </tr>
+
+            }
+        </table>
+    </div>
+</div>

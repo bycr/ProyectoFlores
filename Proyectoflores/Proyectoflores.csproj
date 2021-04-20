@@ -133,6 +133,7 @@
     <Compile Include="Controllers\FincaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvernaderoController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Filters\VerificaSession.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -177,6 +178,8 @@
     <Compile Include="Models\ViewModelInvernadero\ListInvernaderoViewModel.cs" />
     <Compile Include="Models\ViewModelsFinca\FincaViewModel.cs" />
     <Compile Include="Models\ViewModelsFinca\ListFincaViewModel.cs" />
+    <Compile Include="Models\ViewModelUsuario\ListUsuarioViewModel.cs" />
+    <Compile Include="Models\ViewModelUsuario\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -249,6 +252,8 @@
     <Content Include="Views\Invernadero\EditarInvernadero.cshtml" />
     <Content Include="Views\Acceso\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Usuario\ListaUsuario.cshtml" />
+    <Content Include="Views\Usuario\NuevoUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
