@@ -2,11 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Proyectoflores.Models;
-using Proyectoflores.Models.ViewModelsFinca;
 
 namespace Proyectoflores.Controllers
 {

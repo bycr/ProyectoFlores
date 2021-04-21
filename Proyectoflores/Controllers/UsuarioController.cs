@@ -19,26 +19,133 @@ namespace Proyectoflores.Controllers
                 lst = (from d in db.usuario
                        select new ListUsuarioViewModel
                        {
-                           cedula = d.cedula,
+                           Cedula = d.cedula,
                            //password = d.password,
-                           nombres = d.nombres,
-                           apellidos = d.apellidos,
-                           idrol = d.idrol,
-                           idfinca = d.idfinca
+                           Nombres = d.nombres,
+                           Apellidos = d.apellidos,
+                           Idrol = d.idrol,
+                           Idfinca = d.idfinca
                        }).ToList();
             }
 
             return View(lst);
         }
 
-        public ActionResult NuevoUsuario()
+        public ActionResult NuevoUsuario(int id = 0)
         {
-            return View();
+            usuario mod = new usuario();
+            using (proyectofloresEntities db = new proyectofloresEntities())
+            {
+                if(id != 0)
+                    mod = db.usuario.Where(x => x.idfinca == id).FirstOrDefault();
+                    mod.fincaCollection = db.finca.ToList<finca>();
+                    mod.rolCollection = db.rol.ToList<rol>();
+            }
+
+            return View(mod);
         }
 
-        public ActionResult EditarUsuario(int Id)
+        [HttpPost]
+        public ActionResult NuevoUsuario(usuario model)
         {
-            return View();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using(proyectofloresEntities db = new proyectofloresEntities())
+                    {
+                        var oUsuario = new usuario();
+
+                        oUsuario.cedula = model.cedula;
+                        oUsuario.password = model.password;
+                        oUsuario.nombres = model.nombres;
+                        oUsuario.apellidos = model.apellidos;
+                        oUsuario.idrol = model.idrol;
+                        oUsuario.idfinca = model.idfinca;
+
+                        db.usuario.Add(oUsuario);
+                        db.SaveChanges();
+
+                    }
+
+                    return Redirect("~/Usuario/ListaUsuario");
+                }
+                return View(model);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public ActionResult EditarUsuario(int Id, int id)
+        {
+            usuario mod = new usuario();
+            using (proyectofloresEntities db = new proyectofloresEntities())
+            {
+                var oUsuario = db.usuario.Find(Id);
+                mod.password = oUsuario.password;
+                mod.nombres = oUsuario.nombres;
+                mod.apellidos = oUsuario.apellidos;
+                //mod.idrol = oUsuario.idrol;
+                //mod.idfinca = oUsuario.idfinca;
+                //mod.cedula = oUsuario.cedula;
+
+                if (id != 0)
+                    mod = db.usuario.Where(x => x.idfinca == id).FirstOrDefault();
+                    mod.fincaCollection = db.finca.ToList<finca>();
+                    mod = db.usuario.Where(x => x.idrol == id).FirstOrDefault();
+                    mod.rolCollection = db.rol.ToList<rol>();
+            }
+
+            return View(mod);
+        }
+
+        [HttpPost]
+        public ActionResult EditarUsuario(usuario model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (proyectofloresEntities db = new proyectofloresEntities())
+                    {
+                        var oUsuario = db.usuario.Find(model.cedula);
+
+                        //oUsuario.cedula = model.cedula;
+                        oUsuario.password = model.password;
+                        oUsuario.nombres = model.nombres;
+                        oUsuario.apellidos = model.apellidos;
+                        oUsuario.idrol = model.idrol;
+                        oUsuario.idfinca = model.idfinca;
+
+                        db.Entry(oUsuario).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+
+                    }
+
+                    return Redirect("~/Usuario/ListaUsuario");
+                }
+
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        //Eliminar 
+        [HttpGet]
+        public ActionResult EliminarUsuario(int Id)
+        {
+            using (proyectofloresEntities db = new proyectofloresEntities())
+            {
+                var oUsuario = db.usuario.Find(Id);
+                db.usuario.Remove(oUsuario);
+                db.SaveChanges();
+            }
+            return Redirect("~/Usuario/ListaUsuario");
         }
 
     }

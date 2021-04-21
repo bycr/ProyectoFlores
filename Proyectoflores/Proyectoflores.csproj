@@ -254,6 +254,7 @@
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Usuario\ListaUsuario.cshtml" />
     <Content Include="Views\Usuario\NuevoUsuario.cshtml" />
+    <Content Include="Views\Usuario\EditarUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

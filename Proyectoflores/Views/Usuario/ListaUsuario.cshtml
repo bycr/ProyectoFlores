@@ -24,14 +24,14 @@
             @foreach (var oElemento in Model)
             {
                 <tr>
-                    <td>@oElemento.cedula</td>
-                    <td>@oElemento.nombres</td>
-                    <td>@oElemento.apellidos</td>
-                    <td>@oElemento.idrol</td>
-                    <td>@oElemento.idfinca</td>
+                    <td>@oElemento.Cedula</td>
+                    <td>@oElemento.Nombres</td>
+                    <td>@oElemento.Apellidos</td>
+                    <td>@oElemento.Idrol</td>
+                    <td>@oElemento.Idfinca</td>
                     <td>
-                        <a class="btn btn-primary" href="~/finca/EditarUsuario/@oElemento.cedula">Editar</a>
-                        <a class="btn btn-danger" href="~/finca/EliminarUsuario/@oElemento.cedula">Eliminar</a>
+                        <a class="btn btn-primary" href="~/Usuario/EditarUsuario/@oElemento.Cedula">Editar</a>
+                        <a class="btn btn-danger" href="~/Usuario/EliminarUsuario/@oElemento.Cedula">Eliminar</a>
                     </td>
                 </tr>
 

@@ -18,5 +18,8 @@ namespace Proyectoflores.Models.ViewModelUsuario
         public virtual FincaViewModel fincaViewModel { get; set; }
         public virtual rol rol { get; set; }
 
+        public List<FincaViewModel> fincaViewModelCollection { get; set; }
+        public List<rol> rolCollection { get; set; }
+
     }
 }

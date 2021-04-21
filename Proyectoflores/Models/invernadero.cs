@@ -9,9 +9,8 @@
 
 namespace Proyectoflores.Models
 {
-    using System;
     using System.Collections.Generic;
-    
+
     public partial class invernadero
     {
         public int idinvernadero { get; set; }

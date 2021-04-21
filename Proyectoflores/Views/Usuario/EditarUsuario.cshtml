@@ -1,15 +1,21 @@
 ﻿@model Proyectoflores.Models.usuario
 @{
-    ViewBag.Title = "Registrar nuevo usuario";
+    ViewBag.Title = "Editar un Usuario";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>@ViewBag.Title</h2>
 
+
 @*NuevoUsuario nombre metodo *@
 @*Invernadero nombre del controlador *@
-@using (Html.BeginForm("NuevoUsuario", "Usuario", FormMethod.Post))
+@using (Html.BeginForm("EditarUsuario", "Usuario", FormMethod.Post))
 {
+
+    @Html.HiddenFor(d => d.cedula)
+    @Html.HiddenFor(d => d.idrol)
+
+
     <div class="col-md-12">
         <div class="col-md-6">
             <b>@Html.LabelFor(d => d.cedula)</b>

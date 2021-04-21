@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Proyectoflores.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
+
     public partial class usuario
     {
         public int cedula { get; set; }
@@ -23,5 +23,8 @@ namespace Proyectoflores.Models
     
         public virtual finca finca { get; set; }
         public virtual rol rol { get; set; }
+
+        public List<finca> fincaCollection { get; set; }
+        public List<rol> rolCollection { get; set; }
     }
 }
