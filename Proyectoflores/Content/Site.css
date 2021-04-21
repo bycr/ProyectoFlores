@@ -1,3 +1,7 @@
 ﻿.red{
     color:$ff0000;
 }
+
+.body {
+    margin-top: 20px;
+}
