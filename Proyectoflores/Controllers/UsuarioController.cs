@@ -88,14 +88,14 @@ namespace Proyectoflores.Controllers
                 mod.nombres = oUsuario.nombres;
                 mod.apellidos = oUsuario.apellidos;
                 //mod.idrol = oUsuario.idrol;
-                //mod.idfinca = oUsuario.idfinca;
+                mod.idfinca = oUsuario.idfinca;
                 //mod.cedula = oUsuario.cedula;
 
                 if (id != 0)
                     mod = db.usuario.Where(x => x.idfinca == id).FirstOrDefault();
                     mod.fincaCollection = db.finca.ToList<finca>();
-                    mod = db.usuario.Where(x => x.idrol == id).FirstOrDefault();
-                    mod.rolCollection = db.rol.ToList<rol>();
+                    //mod = db.usuario.Where(x => x.idrol == id).FirstOrDefault();
+                    //mod.rolCollection = db.rol.ToList<rol>();
             }
 
             return View(mod);
@@ -116,7 +116,7 @@ namespace Proyectoflores.Controllers
                         oUsuario.password = model.password;
                         oUsuario.nombres = model.nombres;
                         oUsuario.apellidos = model.apellidos;
-                        oUsuario.idrol = model.idrol;
+                        //oUsuario.idrol = model.idrol;
                         oUsuario.idfinca = model.idfinca;
 
                         db.Entry(oUsuario).State = System.Data.Entity.EntityState.Modified;

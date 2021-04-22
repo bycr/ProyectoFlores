@@ -1,4 +1,5 @@
-﻿using Proyectoflores.Models;
+﻿using Proyectoflores.Filters;
+using Proyectoflores.Models;
 using Proyectoflores.Models.ViewModelsFinca;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace Proyectoflores.Controllers
     public class FincaController : Controller
     {
         // GET: finca
+        [AuthorizeUser(idOperacion:1)]
         public ActionResult ListaFinca()
         {
             List<ListFincaViewModel>  lst;
@@ -30,6 +32,7 @@ namespace Proyectoflores.Controllers
             return View(lst);
         }
 
+        [AuthorizeUser(idOperacion:2)]
         public ActionResult NuevaFinca()
         {
             return View();
@@ -65,7 +68,7 @@ namespace Proyectoflores.Controllers
         }
 
         //editar finca
-
+        [AuthorizeUser(idOperacion:5)]
         public ActionResult EditarFinca(int Id)
         {
             FincaViewModel model = new FincaViewModel();
@@ -106,6 +109,7 @@ namespace Proyectoflores.Controllers
             }
         }
 
+        [AuthorizeUser(idOperacion:6)]
         [HttpGet]
         public ActionResult EliminarFinca(int Id)
         {
