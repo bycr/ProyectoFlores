@@ -11,11 +11,15 @@ namespace Proyectoflores.Controllers
     public class FincaController : Controller
     {
         // GET: finca
+        public static string vistalista()
+        {
+            return "lst";
+        }
         public ActionResult ListaFinca()
         {
-            List<ListFincaViewModel>  lst;
+            List<ListFincaViewModel> lst;
 
-            using (proyectofloresEntities db = new proyectofloresEntities() )
+            using (proyectofloresEntities db = new proyectofloresEntities())
             {
                 lst = (from d in db.finca
                        select new ListFincaViewModel
@@ -28,13 +32,17 @@ namespace Proyectoflores.Controllers
             }
 
             return View(lst);
+
         }
 
         public ActionResult NuevaFinca()
         {
             return View();
         }
-
+        public static string vistaNuevafinca()
+        {
+            return "model";
+        }
         [HttpPost]
         public ActionResult NuevaFinca(FincaViewModel model)
         {
@@ -47,13 +55,14 @@ namespace Proyectoflores.Controllers
                         var oFinca = new finca();
 
                         oFinca.nombrefinca = model.Nombrefinca;
-                        oFinca.ubicacionf = model.Ubicacion;                 
+                        oFinca.ubicacionf = model.Ubicacion;
+
 
                         db.finca.Add(oFinca);
                         db.SaveChanges();
 
                     }
-                                
+
                     return Redirect("~/finca/ListaFinca");
                 }
                 return View(model);
@@ -65,7 +74,10 @@ namespace Proyectoflores.Controllers
         }
 
         //editar finca
-
+        public static string vistaEditarfinca()
+        {
+            return "model";
+        }
         public ActionResult EditarFinca(int Id)
         {
             FincaViewModel model = new FincaViewModel();
@@ -92,6 +104,7 @@ namespace Proyectoflores.Controllers
                         oFinca.nombrefinca = model.Nombrefinca;
                         oFinca.ubicacionf = model.Ubicacion;
 
+
                         db.Entry(oFinca).State = System.Data.Entity.EntityState.Modified;
                         db.SaveChanges();
                     }
@@ -106,6 +119,10 @@ namespace Proyectoflores.Controllers
             }
         }
 
+        public static string vistaEliminarFinca()
+        {
+            return "model";
+        }
         [HttpGet]
         public ActionResult EliminarFinca(int Id)
         {
