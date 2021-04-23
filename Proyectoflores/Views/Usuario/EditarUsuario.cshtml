@@ -13,8 +13,7 @@
 {
 
     @Html.HiddenFor(d => d.cedula)
-    @Html.HiddenFor(d => d.idrol)
-
+    @Html.HiddenFor(d => d.idfinca)
 
     <div class="col-md-12">
         <div class="col-md-6">
@@ -43,10 +42,12 @@
     </div>
 
     <div class="col-md-12">
+        @*
         <div class="col-md-6">
             <b>@Html.LabelFor(d => d.idrol)</b>
             @Html.DropDownListFor(d => d.idrol, new SelectList(Model.rolCollection, "Idrol", "nombre"), "Seleccione rol", new { @class = "form-control" })
         </div>
+        *@
         <div class="col-md-6">
             <b>@Html.LabelFor(d => d.idfinca)</b>
             @Html.DropDownListFor(d => d.idfinca, new SelectList(Model.fincaCollection, "Idfinca", "Nombrefinca"), "Seleccione finca", new { @class = "form-control" })
