@@ -15,7 +15,18 @@ namespace Proyectoflores.Controllers
         public static string vistalista() {
             return "lst";
         }
-
+        public static string vistaNuevafinca()
+        {
+            return "model";
+        }
+        public static string vistaEditarfinca()
+        {
+            return "model";
+        }
+        public static string vistaEliminarFinca()
+        {
+            return "model";
+        }
         [AuthorizeUser(idOperacion:1)]
         public ActionResult ListaFinca()
         {
