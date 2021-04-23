@@ -12,6 +12,10 @@ namespace Proyectoflores.Controllers
     public class FincaController : Controller
     {
         // GET: finca
+        public static string vistalista() {
+            return "lst";
+        }
+
         [AuthorizeUser(idOperacion:1)]
         public ActionResult ListaFinca()
         {
