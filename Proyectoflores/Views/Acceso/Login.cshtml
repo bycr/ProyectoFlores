@@ -19,15 +19,15 @@
         </div>
         <form action="@Url.Content("~/Acceso/Login")" method="post">
             <div class="form-group">
-                <b><label>Usuario</label></b>
+                <b><label>@Recursos.Recurso.Login_usuario</label></b>
                 <input type="number" name="User" class="form-control" />
             </div>
             <div class="form-group">
-                <b><label>Contraseña</label></b>
+                <b><label>@Recursos.Recurso.Login_contraseña</label></b>
                 <input type="password" name="Pass" class="form-control" />
             </div>
             <div class="form-group">
-                <input type="submit" value="Entrar" class="btn btn-success" />
+                <input type="submit" value="@Recursos.Recurso.Login_boton_acceso" class="btn btn-success" />
             </div>
         </form>
 
