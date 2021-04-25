@@ -202,8 +202,8 @@
     <Content Include="Css\EstilosLogin.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\LogoE6050.png" />
-    <Content Include="fonts\logosfondo.png" />
+    <Content Include="Img\LogoE6050.png" />
+    <Content Include="Img\logosfondo.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Img\1.jpg" />
