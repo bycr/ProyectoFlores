@@ -36,7 +36,7 @@ namespace Proyectoflores.Controllers
             {
                 if (id != 0)
                 mod = db.invernadero.Where(x => x.idfinca == id).FirstOrDefault();
-                mod.FincaCollection = db.finca.ToList<finca>();
+                //mod.FincaCollection = db.finca.ToList<finca>();
             }
             return View(mod);
         }
@@ -83,7 +83,7 @@ namespace Proyectoflores.Controllers
 
                 if (id != 0)
                     mod = db.invernadero.Where(x => x.idfinca == id).FirstOrDefault();
-                    mod.FincaCollection = db.finca.ToList<finca>();
+                    //mod.FincaCollection = db.finca.ToList<finca>();
 
             }
             return View(mod);

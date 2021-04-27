@@ -7,13 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Proyectoflores.Models
 {
-
+    using System;
+    using System.Collections.Generic;
+    
     public partial class usuario
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public usuario()
+        {
+            this.bloque = new HashSet<bloque>();
+        }
+    
         public int cedula { get; set; }
         public string password { get; set; }
         public string nombres { get; set; }
@@ -23,8 +29,7 @@ namespace Proyectoflores.Models
     
         public virtual finca finca { get; set; }
         public virtual rol rol { get; set; }
-
-        public List<finca> fincaCollection { get; set; }
-        public List<rol> rolCollection { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<bloque> bloque { get; set; }
     }
 }

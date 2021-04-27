@@ -19,15 +19,24 @@ namespace Proyectoflores.Models
         {
             this.invernadero = new HashSet<invernadero>();
             this.usuario = new HashSet<usuario>();
+            this.bloque = new HashSet<bloque>();
+            this.fertirriego = new HashSet<fertirriego>();
         }
     
         public int idfinca { get; set; }
         public string nombrefinca { get; set; }
-        public string ubicacionf { get; set; }
+        public long iddepartamento_ { get; set; }
+        public long idmunicipio { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<invernadero> invernadero { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<usuario> usuario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<bloque> bloque { get; set; }
+        public virtual departamentos departamentos { get; set; }
+        public virtual municipios municipios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<fertirriego> fertirriego { get; set; }
     }
 }

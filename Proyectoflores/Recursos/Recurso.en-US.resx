@@ -159,4 +159,16 @@
   <data name="_Layout_Usuarios" xml:space="preserve">
     <value>Users</value>
   </data>
+  <data name="Finca_Lista_ciudad" xml:space="preserve">
+    <value>municipality</value>
+  </data>
+  <data name="Finca_Lista_Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="Finca_Lista_nombre" xml:space="preserve">
+    <value>Farm name</value>
+  </data>
+  <data name="Finca_Lista_region" xml:space="preserve">
+    <value>Region</value>
+  </data>
 </root>

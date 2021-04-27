@@ -18,24 +18,26 @@
     <div class="col-md-12">
         <table class="table">
             <tr>
-                <th>Id</th>
-                <th>Nombre finca</th>
-                <th>Ubicación</th>
+                <th>@Recursos.Recurso.Finca_Lista_Id</th>
+                <th>@Recursos.Recurso.Finca_Lista_nombre</th>
+                <th>@Recursos.Recurso.Finca_Lista_region</th>
+                <th>@Recursos.Recurso.Finca_Lista_ciudad</th>
                 <th></th>
             </tr>
             @foreach (var oElemento in Model)
-            {
+             {
                 <tr>
                     <td>@oElemento.Idfinca</td>
                     <td>@oElemento.Nombrefinca</td>
-                    <td>@oElemento.Ubicacion</td>
+                    <td>@oElemento.Iddepartamento_</td>
+                    <td>@oElemento.Idmunicipio</td>
                     <td>
                         <a class="btn btn-primary" href="~/finca/EditarFinca/@oElemento.Idfinca">Editar</a>
                         <a class="btn btn-danger" href="~/finca/EliminarFinca/@oElemento.Idfinca">Eliminar</a>
                     </td>
                 </tr>
 
-            }
+             }
         </table>
     </div>
 </div>

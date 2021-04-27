@@ -159,4 +159,16 @@ referencia, por favor salga del sistema y no haga mal uso de esta aplicación we
   <data name="_Layout_Usuarios" xml:space="preserve">
     <value>Usuarios</value>
   </data>
+  <data name="Finca_Lista_ciudad" xml:space="preserve">
+    <value>Municipio</value>
+  </data>
+  <data name="Finca_Lista_Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="Finca_Lista_nombre" xml:space="preserve">
+    <value>Nombre finca</value>
+  </data>
+  <data name="Finca_Lista_region" xml:space="preserve">
+    <value>Departamento </value>
+  </data>
 </root>

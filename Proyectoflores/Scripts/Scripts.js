@@ -2,7 +2,7 @@
     $('#dvGridWith').width($('#dvScreenWidth').width());
 });
 
-
+/*este funciona bien */
 function ValidateNumber(e) {
     var evt = (e) ? e : window.event;
     var charCode = (evt.keyCode) ? evt.keyCode : evt.which;

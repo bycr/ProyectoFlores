@@ -9,16 +9,23 @@
 
 namespace Proyectoflores.Models
 {
+    using System;
     using System.Collections.Generic;
-
+    
     public partial class invernadero
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public invernadero()
+        {
+            this.bloque = new HashSet<bloque>();
+        }
+    
         public int idinvernadero { get; set; }
         public int numeroinvernadero { get; set; }
         public int idfinca { get; set; }
     
         public virtual finca finca { get; set; }
-
-        public List<finca> FincaCollection { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<bloque> bloque { get; set; }
     }
 }

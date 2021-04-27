@@ -124,6 +124,42 @@ namespace Recursos {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Municipio.
+        /// </summary>
+        public static string Finca_Lista_ciudad {
+            get {
+                return ResourceManager.GetString("Finca_Lista_ciudad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Id.
+        /// </summary>
+        public static string Finca_Lista_Id {
+            get {
+                return ResourceManager.GetString("Finca_Lista_Id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nombre finca.
+        /// </summary>
+        public static string Finca_Lista_nombre {
+            get {
+                return ResourceManager.GetString("Finca_Lista_nombre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Departamento .
+        /// </summary>
+        public static string Finca_Lista_region {
+            get {
+                return ResourceManager.GetString("Finca_Lista_region", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Este sistema de inventario esta desarrollado único y exclusivamente para los
         ///propietarios y administradores de las empresas de flores, si usted por algún motivo
         ///logro acceder sin hacer parte de alguno de estos dos últimos a los cuales se hace

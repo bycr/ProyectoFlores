@@ -15,8 +15,12 @@ namespace Proyectoflores.Models.ViewModelsFinca
         [Display(Name = "Nombre de la finca")]
         public string Nombrefinca { get; set; }
         [Required]
-        [Display(Name = "Ubicación")]
+        [Display(Name = "Departamento")]
         [StringLength(50)]
-        public string Ubicacion { get; set; }
+        public long Iddepartamento_ { get; set; }
+        [Display(Name = "Municipio")]
+        public long Idmunicipio { get; set; }
+
+
     }
 }
