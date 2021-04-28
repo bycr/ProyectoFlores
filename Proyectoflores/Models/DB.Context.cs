@@ -33,8 +33,8 @@ namespace Proyectoflores.Models
         public virtual DbSet<rol_operacion> rol_operacion { get; set; }
         public virtual DbSet<usuario> usuario { get; set; }
         public virtual DbSet<bloque> bloque { get; set; }
+        public virtual DbSet<produccion> produccion { get; set; }
         public virtual DbSet<departamentos> departamentos { get; set; }
-        public virtual DbSet<fertirriego> fertirriego { get; set; }
         public virtual DbSet<municipios> municipios { get; set; }
     }
 }

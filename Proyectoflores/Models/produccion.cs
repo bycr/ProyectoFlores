@@ -12,7 +12,7 @@ namespace Proyectoflores.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class fertirriego
+    public partial class produccion
     {
         public int Idfertirriego { get; set; }
         public int valvula { get; set; }

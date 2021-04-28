@@ -24,22 +24,11 @@
         </EntityType>
         <EntityType Name="departamentos">
           <Key>
-            <PropertyRef Name="Iddepartamento" />
+            <PropertyRef Name="iddepartamento" />
           </Key>
-          <Property Name="Iddepartamento" Type="bigint" Nullable="false" />
+          <Property Name="iddepartamento" Type="bigint" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="codigo" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="fertirriego">
-          <Key>
-            <PropertyRef Name="Idfertirriego" />
-          </Key>
-          <Property Name="Idfertirriego" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="valvula" Type="int" Nullable="false" />
-          <Property Name="numerobloque" Type="int" Nullable="false" />
-          <Property Name="numerogoteros" Type="int" Nullable="false" />
-          <Property Name="idfinca" Type="int" Nullable="false" />
-          <Property Name="fechacreado" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="finca">
           <Key>
@@ -67,9 +56,9 @@
         </EntityType>
         <EntityType Name="municipios">
           <Key>
-            <PropertyRef Name="Idmunicipio" />
+            <PropertyRef Name="idmunicipio" />
           </Key>
-          <Property Name="Idmunicipio" Type="bigint" Nullable="false" />
+          <Property Name="idmunicipio" Type="bigint" Nullable="false" />
           <Property Name="iddepartamento" Type="bigint" Nullable="false" />
           <Property Name="codigo" Type="int" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="200" Nullable="false" />
@@ -81,6 +70,17 @@
           <Property Name="idoperacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="idmodulo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="produccion">
+          <Key>
+            <PropertyRef Name="Idfertirriego" />
+          </Key>
+          <Property Name="Idfertirriego" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="valvula" Type="int" Nullable="false" />
+          <Property Name="numerobloque" Type="int" Nullable="false" />
+          <Property Name="numerogoteros" Type="int" Nullable="false" />
+          <Property Name="idfinca" Type="int" Nullable="false" />
+          <Property Name="fechacreado" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="rol">
           <Key>
@@ -125,7 +125,7 @@
           <End Role="municipios" Type="Self.municipios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="departamentos">
-              <PropertyRef Name="Iddepartamento" />
+              <PropertyRef Name="iddepartamento" />
             </Principal>
             <Dependent Role="municipios">
               <PropertyRef Name="iddepartamento" />
@@ -137,7 +137,7 @@
           <End Role="finca" Type="Self.finca" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="departamentos">
-              <PropertyRef Name="Iddepartamento" />
+              <PropertyRef Name="iddepartamento" />
             </Principal>
             <Dependent Role="finca">
               <PropertyRef Name="iddepartamento " />
@@ -182,12 +182,12 @@
         </Association>
         <Association Name="fk_idfinca4">
           <End Role="finca" Type="Self.finca" Multiplicity="1" />
-          <End Role="fertirriego" Type="Self.fertirriego" Multiplicity="*" />
+          <End Role="produccion" Type="Self.produccion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="finca">
               <PropertyRef Name="idfinca" />
             </Principal>
-            <Dependent Role="fertirriego">
+            <Dependent Role="produccion">
               <PropertyRef Name="idfinca" />
             </Dependent>
           </ReferentialConstraint>
@@ -221,7 +221,7 @@
           <End Role="finca" Type="Self.finca" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="municipios">
-              <PropertyRef Name="Idmunicipio" />
+              <PropertyRef Name="idmunicipio" />
             </Principal>
             <Dependent Role="finca">
               <PropertyRef Name="idmunicipio" />
@@ -267,12 +267,12 @@
         <EntityContainer Name="proyectofloresModelStoreContainer">
           <EntitySet Name="bloque" EntityType="Self.bloque" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="departamentos" EntityType="Self.departamentos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="fertirriego" EntityType="Self.fertirriego" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="finca" EntityType="Self.finca" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="invernadero" EntityType="Self.invernadero" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="modulo" EntityType="Self.modulo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="municipios" EntityType="Self.municipios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="operaciones" EntityType="Self.operaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="produccion" EntityType="Self.produccion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rol" EntityType="Self.rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rol_operacion" EntityType="Self.rol_operacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
@@ -302,7 +302,7 @@
           </AssociationSet>
           <AssociationSet Name="fk_idfinca4" Association="Self.fk_idfinca4">
             <End Role="finca" EntitySet="finca" />
-            <End Role="fertirriego" EntitySet="fertirriego" />
+            <End Role="produccion" EntitySet="produccion" />
           </AssociationSet>
           <AssociationSet Name="fk_idinvernadero" Association="Self.fk_idinvernadero">
             <End Role="invernadero" EntitySet="invernadero" />
@@ -344,9 +344,9 @@
           <Property Name="iddepartamento_" Type="Int64" Nullable="false" />
           <Property Name="idmunicipio" Type="Int64" Nullable="false" />
           <NavigationProperty Name="bloque" Relationship="proyectofloresModel.fk_idfinca1" FromRole="finca" ToRole="bloque" />
+          <NavigationProperty Name="produccion" Relationship="proyectofloresModel.fk_idfinca41" FromRole="finca" ToRole="produccion" />
           <NavigationProperty Name="departamentos" Relationship="proyectofloresModel.fk_iddepartamento2" FromRole="finca" ToRole="departamentos" />
           <NavigationProperty Name="municipios" Relationship="proyectofloresModel.fk_idmunicipio" FromRole="finca" ToRole="municipios" />
-          <NavigationProperty Name="fertirriego" Relationship="proyectofloresModel.fk_idfinca4" FromRole="finca" ToRole="fertirriego" />
         </EntityType>
         <EntityContainer Name="proyectofloresEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="finca" EntityType="Self.finca" />
@@ -381,9 +381,6 @@
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
           <EntitySet Name="bloque" EntityType="proyectofloresModel.bloque" />
-          <EntitySet Name="departamentos" EntityType="proyectofloresModel.departamentos" />
-          <EntitySet Name="fertirriego" EntityType="proyectofloresModel.fertirriego" />
-          <EntitySet Name="municipios" EntityType="proyectofloresModel.municipios" />
           <AssociationSet Name="fk_cedula" Association="proyectofloresModel.fk_cedula">
             <End Role="usuario" EntitySet="usuario" />
             <End Role="bloque" EntitySet="bloque" />
@@ -396,6 +393,13 @@
             <End Role="invernadero" EntitySet="invernadero" />
             <End Role="bloque" EntitySet="bloque" />
           </AssociationSet>
+          <EntitySet Name="produccion" EntityType="proyectofloresModel.produccion" />
+          <AssociationSet Name="fk_idfinca41" Association="proyectofloresModel.fk_idfinca41">
+            <End Role="finca" EntitySet="finca" />
+            <End Role="produccion" EntitySet="produccion" />
+          </AssociationSet>
+          <EntitySet Name="departamentos" EntityType="proyectofloresModel.departamentos" />
+          <EntitySet Name="municipios" EntityType="proyectofloresModel.municipios" />
           <AssociationSet Name="fk_iddepartamento" Association="proyectofloresModel.fk_iddepartamento">
             <End Role="departamentos" EntitySet="departamentos" />
             <End Role="municipios" EntitySet="municipios" />
@@ -407,10 +411,6 @@
           <AssociationSet Name="fk_idmunicipio" Association="proyectofloresModel.fk_idmunicipio">
             <End Role="municipios" EntitySet="municipios" />
             <End Role="finca" EntitySet="finca" />
-          </AssociationSet>
-          <AssociationSet Name="fk_idfinca4" Association="proyectofloresModel.fk_idfinca4">
-            <End Role="finca" EntitySet="finca" />
-            <End Role="fertirriego" EntitySet="fertirriego" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="invernadero">
@@ -566,39 +566,6 @@
           <NavigationProperty Name="finca" Relationship="proyectofloresModel.fk_idfinca1" FromRole="bloque" ToRole="finca" />
           <NavigationProperty Name="invernadero" Relationship="proyectofloresModel.fk_idinvernadero" FromRole="bloque" ToRole="invernadero" />
         </EntityType>
-        <EntityType Name="departamentos">
-          <Key>
-            <PropertyRef Name="Iddepartamento" />
-          </Key>
-          <Property Name="Iddepartamento" Type="Int64" Nullable="false" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="codigo" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="municipios" Relationship="proyectofloresModel.fk_iddepartamento" FromRole="departamentos" ToRole="municipios" />
-          <NavigationProperty Name="finca" Relationship="proyectofloresModel.fk_iddepartamento2" FromRole="departamentos" ToRole="finca" />
-        </EntityType>
-        <EntityType Name="fertirriego">
-          <Key>
-            <PropertyRef Name="Idfertirriego" />
-          </Key>
-          <Property Name="Idfertirriego" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="valvula" Type="Int32" Nullable="false" />
-          <Property Name="numerobloque" Type="Int32" Nullable="false" />
-          <Property Name="numerogoteros" Type="Int32" Nullable="false" />
-          <Property Name="idfinca" Type="Int32" Nullable="false" />
-          <Property Name="fechacreado" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="finca" Relationship="proyectofloresModel.fk_idfinca4" FromRole="fertirriego" ToRole="finca" />
-        </EntityType>
-        <EntityType Name="municipios">
-          <Key>
-            <PropertyRef Name="Idmunicipio" />
-          </Key>
-          <Property Name="Idmunicipio" Type="Int64" Nullable="false" />
-          <Property Name="iddepartamento" Type="Int64" Nullable="false" />
-          <Property Name="codigo" Type="Int32" Nullable="false" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="departamentos" Relationship="proyectofloresModel.fk_iddepartamento" FromRole="municipios" ToRole="departamentos" />
-          <NavigationProperty Name="finca" Relationship="proyectofloresModel.fk_idmunicipio" FromRole="municipios" ToRole="finca" />
-        </EntityType>
         <Association Name="fk_cedula">
           <End Type="proyectofloresModel.usuario" Role="usuario" Multiplicity="1" />
           <End Type="proyectofloresModel.bloque" Role="bloque" Multiplicity="*" />
@@ -635,12 +602,57 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="produccion">
+          <Key>
+            <PropertyRef Name="Idfertirriego" />
+          </Key>
+          <Property Name="Idfertirriego" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="valvula" Type="Int32" Nullable="false" />
+          <Property Name="numerobloque" Type="Int32" Nullable="false" />
+          <Property Name="numerogoteros" Type="Int32" Nullable="false" />
+          <Property Name="idfinca" Type="Int32" Nullable="false" />
+          <Property Name="fechacreado" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="finca" Relationship="proyectofloresModel.fk_idfinca41" FromRole="produccion" ToRole="finca" />
+        </EntityType>
+        <Association Name="fk_idfinca41">
+          <End Type="proyectofloresModel.finca" Role="finca" Multiplicity="1" />
+          <End Type="proyectofloresModel.produccion" Role="produccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="finca">
+              <PropertyRef Name="idfinca" />
+            </Principal>
+            <Dependent Role="produccion">
+              <PropertyRef Name="idfinca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="departamentos">
+          <Key>
+            <PropertyRef Name="iddepartamento" />
+          </Key>
+          <Property Name="iddepartamento" Type="Int64" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="codigo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="municipios" Relationship="proyectofloresModel.fk_iddepartamento" FromRole="departamentos" ToRole="municipios" />
+          <NavigationProperty Name="finca" Relationship="proyectofloresModel.fk_iddepartamento2" FromRole="departamentos" ToRole="finca" />
+        </EntityType>
+        <EntityType Name="municipios">
+          <Key>
+            <PropertyRef Name="idmunicipio" />
+          </Key>
+          <Property Name="idmunicipio" Type="Int64" Nullable="false" />
+          <Property Name="iddepartamento" Type="Int64" Nullable="false" />
+          <Property Name="codigo" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="departamentos" Relationship="proyectofloresModel.fk_iddepartamento" FromRole="municipios" ToRole="departamentos" />
+          <NavigationProperty Name="finca" Relationship="proyectofloresModel.fk_idmunicipio" FromRole="municipios" ToRole="finca" />
+        </EntityType>
         <Association Name="fk_iddepartamento">
           <End Type="proyectofloresModel.departamentos" Role="departamentos" Multiplicity="1" />
           <End Type="proyectofloresModel.municipios" Role="municipios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="departamentos">
-              <PropertyRef Name="Iddepartamento" />
+              <PropertyRef Name="iddepartamento" />
             </Principal>
             <Dependent Role="municipios">
               <PropertyRef Name="iddepartamento" />
@@ -652,7 +664,7 @@
           <End Type="proyectofloresModel.finca" Role="finca" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="departamentos">
-              <PropertyRef Name="Iddepartamento" />
+              <PropertyRef Name="iddepartamento" />
             </Principal>
             <Dependent Role="finca">
               <PropertyRef Name="iddepartamento_" />
@@ -664,22 +676,10 @@
           <End Type="proyectofloresModel.finca" Role="finca" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="municipios">
-              <PropertyRef Name="Idmunicipio" />
+              <PropertyRef Name="idmunicipio" />
             </Principal>
             <Dependent Role="finca">
               <PropertyRef Name="idmunicipio" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_idfinca4">
-          <End Type="proyectofloresModel.finca" Role="finca" Multiplicity="1" />
-          <End Type="proyectofloresModel.fertirriego" Role="fertirriego" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="finca">
-              <PropertyRef Name="idfinca" />
-            </Principal>
-            <Dependent Role="fertirriego">
-              <PropertyRef Name="idfinca" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -772,18 +772,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="departamentos">
-            <EntityTypeMapping TypeName="proyectofloresModel.departamentos">
-              <MappingFragment StoreEntitySet="departamentos">
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="Iddepartamento" ColumnName="Iddepartamento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="fertirriego">
-            <EntityTypeMapping TypeName="proyectofloresModel.fertirriego">
-              <MappingFragment StoreEntitySet="fertirriego">
+          <EntitySetMapping Name="produccion">
+            <EntityTypeMapping TypeName="proyectofloresModel.produccion">
+              <MappingFragment StoreEntitySet="produccion">
                 <ScalarProperty Name="fechacreado" ColumnName="fechacreado" />
                 <ScalarProperty Name="idfinca" ColumnName="idfinca" />
                 <ScalarProperty Name="numerogoteros" ColumnName="numerogoteros" />
@@ -793,13 +784,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="departamentos">
+            <EntityTypeMapping TypeName="proyectofloresModel.departamentos">
+              <MappingFragment StoreEntitySet="departamentos">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="municipios">
             <EntityTypeMapping TypeName="proyectofloresModel.municipios">
               <MappingFragment StoreEntitySet="municipios">
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="iddepartamento" ColumnName="iddepartamento" />
-                <ScalarProperty Name="Idmunicipio" ColumnName="Idmunicipio" />
+                <ScalarProperty Name="idmunicipio" ColumnName="idmunicipio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

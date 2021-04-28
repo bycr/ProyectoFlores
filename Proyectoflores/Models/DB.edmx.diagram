@@ -18,17 +18,17 @@
         <AssociationConnector Association="proyectofloresModel.fk_idoperacion" />
         <AssociationConnector Association="proyectofloresModel.fk_idrol" />
         <AssociationConnector Association="proyectofloresModel.fk_rol" />
-        <EntityTypeShape EntityType="proyectofloresModel.bloque" Width="1.5" PointX="10.5" PointY="1.25" />
-        <EntityTypeShape EntityType="proyectofloresModel.departamentos" Width="1.5" PointX="0.75" PointY="2.125" />
-        <EntityTypeShape EntityType="proyectofloresModel.fertirriego" Width="1.5" PointX="6.875" PointY="3.75" />
-        <EntityTypeShape EntityType="proyectofloresModel.municipios" Width="1.5" PointX="4.375" PointY="4.75" />
+        <EntityTypeShape EntityType="proyectofloresModel.bloque" Width="1.5" PointX="9.25" PointY="1.625" />
         <AssociationConnector Association="proyectofloresModel.fk_cedula" />
         <AssociationConnector Association="proyectofloresModel.fk_idfinca1" />
         <AssociationConnector Association="proyectofloresModel.fk_idinvernadero" />
+        <EntityTypeShape EntityType="proyectofloresModel.produccion" Width="1.5" PointX="5.25" PointY="11.125" />
+        <AssociationConnector Association="proyectofloresModel.fk_idfinca41" />
+        <EntityTypeShape EntityType="proyectofloresModel.departamentos" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="proyectofloresModel.municipios" Width="1.5" PointX="5.125" PointY="3.125" />
         <AssociationConnector Association="proyectofloresModel.fk_iddepartamento" />
         <AssociationConnector Association="proyectofloresModel.fk_iddepartamento2" />
         <AssociationConnector Association="proyectofloresModel.fk_idmunicipio" />
-        <AssociationConnector Association="proyectofloresModel.fk_idfinca4" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

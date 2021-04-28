@@ -20,7 +20,7 @@ namespace Proyectoflores.Models
             this.finca = new HashSet<finca>();
         }
     
-        public long Idmunicipio { get; set; }
+        public long idmunicipio { get; set; }
         public long iddepartamento { get; set; }
         public int codigo { get; set; }
         public string nombre { get; set; }
