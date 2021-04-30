@@ -231,4 +231,25 @@ referencia, por favor salga del sistema y no haga mal uso de esta aplicación we
   <data name="Usuario_contraseña" xml:space="preserve">
     <value>Contraseña</value>
   </data>
+  <data name="Bloque_diferenciaaño" xml:space="preserve">
+    <value>Diferencia al año</value>
+  </data>
+  <data name="Bloque_diferenciames" xml:space="preserve">
+    <value>Diferencia al mes</value>
+  </data>
+  <data name="Bloque_llevamosaño" xml:space="preserve">
+    <value>Llevamos al año</value>
+  </data>
+  <data name="Bloque_llevamosmes" xml:space="preserve">
+    <value>Llevamos al mes</value>
+  </data>
+  <data name="Bloque_numero" xml:space="preserve">
+    <value>Número de bloque</value>
+  </data>
+  <data name="Bloque_presupuestadoaño" xml:space="preserve">
+    <value>Presupuestado al  año</value>
+  </data>
+  <data name="Bloque_presupuestadomes" xml:space="preserve">
+    <value>Presupuestado al mes</value>
+  </data>
 </root>

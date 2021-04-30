@@ -17,11 +17,11 @@
 
                 <div class="row text-center">
                     <div class="col-md-4">
-                        <b><label class="text-center">Presupuestado </label></b>
+                        <b>@Html.LabelFor(d => d.Presupuestadoaño)</b>
                         @Html.TextBoxFor(d => d.Presupuestadoaño, "", new { @class = "form-control" })
                     </div>
                     <div class="col-md-4">
-                        <b><label class="text-center">Llevamos</label></b>
+                        <b>@Html.LabelFor(d => d.Llevamosaño)</b>
                         @Html.TextBoxFor(d => d.Llevamosaño, "", new { @class = "form-control" })
                     </div>
                 </div>
@@ -39,11 +39,11 @@
 
                 <div class="row text-center">
                     <div class="col-md-4">
-                        <b><label class="text-center">Presupuestado </label></b>
+                        <b>@Html.LabelFor(d => d.Presupuestadomes)</b>
                         @Html.TextBoxFor(d => d.Presupuestadomes, "", new { @class = "form-control" })
                     </div>
                     <div class="col-md-4">
-                        <b><label class="text-center">Llevamos </label></b>
+                        <b>@Html.LabelFor(d => d.Llevamosmes)</b>
                         @Html.TextBoxFor(d => d.Llevamosmes, "", new { @class = "form-control" })
                     </div>
                 </div>
@@ -61,11 +61,11 @@
 
                 <div class="row text-center">
                     <div class="col-md-4">
-                        <b><label class="text-center">Numero bloque </label></b>
+                        <b>@Html.LabelFor(d => d.Numerobloque)</b>
                         @Html.TextBoxFor(d => d.Numerobloque, "", new { @class = "form-control" })
                     </div>
                     <div class="col-md-4">
-                        <b><label class="text-center">Cedula  </label></b>
+                        <b>@Html.LabelFor(d => d.Cedula)</b>
                         @Html.TextBoxFor(d => d.Cedula, "", new { @class = "form-control" })
                     </div>
                 </div>
@@ -88,8 +88,8 @@
                     </div>
                     <div class="col-md-4">
                         <b><label class="text-center">dato invernadero </label></b>
-
-                        @Html.TextBoxFor(d => d.Idinvernadero, "", new { @class = "form-control" })
+                        <b>@Html.LabelFor(d => d.Idinvernadero)</b>
+                        @Html.DropDownListFor(m => m.Idinvernadero, new SelectList(""), Recursos.Recurso.Finca_desplegable_municipio, new { @class = "form-control" })
                     </div>
                 </div>
             </div>
@@ -101,4 +101,19 @@
     </div>
 }
 
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#Idfinca").change(function () {
+            $.get("/Bloque/GetInvernaderoList", { idfinca: $("#Idfinca").val() }, function (data) {
+
+                $("#Idinvernadero").empty();
+                $.each(data, function (Bloque, row) {
+                    $("#Idinvernadero").append("<option value='" + row.idinvernadero + "'>" + row.numeroinvernadero + "</option>")
+
+                });
+            });
+        })
+    });
+</script>
 

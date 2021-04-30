@@ -124,6 +124,69 @@ namespace Recursos {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Diferencia al año.
+        /// </summary>
+        public static string Bloque_diferenciaaño {
+            get {
+                return ResourceManager.GetString("Bloque_diferenciaaño", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Diferencia al mes.
+        /// </summary>
+        public static string Bloque_diferenciames {
+            get {
+                return ResourceManager.GetString("Bloque_diferenciames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Llevamos al año.
+        /// </summary>
+        public static string Bloque_llevamosaño {
+            get {
+                return ResourceManager.GetString("Bloque_llevamosaño", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Llevamos al mes.
+        /// </summary>
+        public static string Bloque_llevamosmes {
+            get {
+                return ResourceManager.GetString("Bloque_llevamosmes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Número de bloque.
+        /// </summary>
+        public static string Bloque_numero {
+            get {
+                return ResourceManager.GetString("Bloque_numero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Presupuestado al  año.
+        /// </summary>
+        public static string Bloque_presupuestadoaño {
+            get {
+                return ResourceManager.GetString("Bloque_presupuestadoaño", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Presupuestado al mes.
+        /// </summary>
+        public static string Bloque_presupuestadomes {
+            get {
+                return ResourceManager.GetString("Bloque_presupuestadomes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Editar.
         /// </summary>
         public static string boton_editar {

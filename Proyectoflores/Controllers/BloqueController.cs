@@ -49,6 +49,13 @@ namespace Proyectoflores.Controllers
             return View();
         }
 
+        public JsonResult GetInvernaderoList(int idfinca)
+        {
+            sd.Configuration.ProxyCreationEnabled = false;
+            List<invernadero> selectList = sd.invernadero.Where(x => x.idfinca == idfinca).ToList();
+            return Json(selectList, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         public ActionResult NuevoBloque(BloqueViewModel model)
         {
