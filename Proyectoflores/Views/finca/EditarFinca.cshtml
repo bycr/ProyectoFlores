@@ -5,54 +5,42 @@
 }
 
 <h2 class="text-center">@ViewBag.Title</h2>
-<script type="text/javascript">
-    function ValidateNumber(e) {
-        var evt = (e) ? e : window.event;
-        var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-            return false;
-        }
-        return true;
-    };
-
-    function checkespacio(e) {
-        tecla = (document.all) ? e.keyCode : e.which;
-
-        //Tecla de retroceso para borrar, siempre la permite
-        if (tecla == 8) {
-            return true;
-        }
-
-        // Patron de entrada, en este caso solo acepta numeros y letras
-        patron = /^[a-zA-Z0-9 ]*$/gm;
-        tecla_final = String.fromCharCode(tecla);
-        return patron.test(tecla_final);
-    };
-
-</script>
 
 @*EditarFinca nombre metodo *@
 @*Finca nombre del controlador *@
 @using (Html.BeginForm("EditarFinca", "Finca", FormMethod.Post))
 {
     @Html.HiddenFor(d => d.Idfinca)
-    <div class="container">
-        <div class="form-group">
-            <div class="col-md-12">
-                <div class="col-md-6">
-                    <b>@Html.DisplayNameFor(d => d.Nombrefinca)</b> 
-                    @Html.TextBoxFor(d => d.Nombrefinca, new { onkeydown = "return checkespacio(event);", onkeyup = "this.value = this.value.toUpperCase();", @class = "form-control" })
-                </div>
-                <div class="col-md-6">
-                    <b>@Html.DisplayNameFor(d => d.Ubicacion)</b> 
-                    @Html.TextBoxFor(d => d.Ubicacion, new { onkeydown = "return checkespacio(event);", onkeyup = "this.value = this.value.toUpperCase();", @class = "form-control" })
-                </div>
+    
+<div class="container">
+    <div class="form-group">
+
+        <div class="col-md-12">
+            <div class="col-md-4">
+                @Html.LabelFor(d => d.Nombrefinca)
+                @Html.TextBoxFor(d => d.Nombrefinca, new { onkeydown = "return checkespacio(event);", onkeyup = "this.value = this.value.toUpperCase();", @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Nombrefinca)
+
             </div>
+            @if (ViewBag.departamentosList != null)
+            {
+                <div class="col-md-4">
+                    @Html.LabelFor(d => d.Iddepartamento)
+                    @Html.DropDownListFor(m => m.Iddepartamento, ViewBag.departamentosList as SelectList, Recursos.Recurso.Finca_desplegable_departamento, new { @class = "form-control" })
+                </div>
+            }
+            <div class="col-md-4">
+                @Html.LabelFor(d => d.Idmunicipio)
+                @Html.DropDownListFor(m => m.Idmunicipio, new SelectList(""), Recursos.Recurso.Finca_desplegable_municipio, new { @class = "form-control" })
+            </div>
+            <br />
         </div>
+        <br />
     </div>
+</div>
 
     <div style="text-align:right">
-        <input value="Guardar" class="btn btn-primary" type="submit" />
+        <input value="@Recursos.Recurso.boton_guardar" class="btn btn-primary" type="submit" />
     </div>
 }
 

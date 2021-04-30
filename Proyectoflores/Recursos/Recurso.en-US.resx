@@ -126,9 +126,6 @@
   <data name="Home_Titulo" xml:space="preserve">
     <value>FLOWER PRODUCTION INFORMATION SYSTEM</value>
   </data>
-  <data name="j" xml:space="preserve">
-    <value />
-  </data>
   <data name="Login_boton_acceso" xml:space="preserve">
     <value>Access</value>
   </data>
@@ -137,6 +134,9 @@
   </data>
   <data name="Login_usuario" xml:space="preserve">
     <value>Username</value>
+  </data>
+  <data name="Invernadero_id" xml:space="preserve">
+    <value>Id</value>
   </data>
   <data name="_Layout_Bloques" xml:space="preserve">
     <value>Blocks</value>
@@ -170,5 +170,41 @@
   </data>
   <data name="Finca_Lista_region" xml:space="preserve">
     <value>Region</value>
+  </data>
+  <data name="Finca_desplegable_departamento" xml:space="preserve">
+    <value>select a region</value>
+  </data>
+  <data name="Finca_desplegable_municipio" xml:space="preserve">
+    <value>select a municipality</value>
+  </data>
+  <data name="Finca_errorm_nombre" xml:space="preserve">
+    <value>The field {0} is required</value>
+  </data>
+  <data name="Invernadero_finca" xml:space="preserve">
+    <value>Farm</value>
+  </data>
+  <data name="Invernadero_numero" xml:space="preserve">
+    <value>Greenhouse number</value>
+  </data>
+  <data name="boton_editar" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="boton_eliminar" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="boton_guardar" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="boton_nuevo" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Invernadero_errorm_idfinca" xml:space="preserve">
+    <value>The field {1} is required</value>
+  </data>
+  <data name="Invernadero_errorm_numero" xml:space="preserve">
+    <value>The field {0} is required</value>
+  </data>
+  <data name="Invernadero_seleccionable" xml:space="preserve">
+    <value>Select a farm</value>
   </data>
 </root>

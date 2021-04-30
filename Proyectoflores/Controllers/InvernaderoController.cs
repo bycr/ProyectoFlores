@@ -29,20 +29,17 @@ namespace Proyectoflores.Controllers
             return View(lst);
         }
 
-        public ActionResult NuevoInvernadero(int id = 0)
+        proyectofloresEntities sd = new proyectofloresEntities();
+
+        public ActionResult NuevoInvernadero()
         {
-            invernadero mod = new invernadero();
-            using (proyectofloresEntities db = new proyectofloresEntities())
-            {
-                if (id != 0)
-                mod = db.invernadero.Where(x => x.idfinca == id).FirstOrDefault();
-                //mod.FincaCollection = db.finca.ToList<finca>();
-            }
-            return View(mod);
+            List<finca> fincaList = sd.finca.ToList();
+            ViewBag.fincaList = new SelectList(fincaList, "idfinca","nombrefinca");
+            return View();
         }
 
         [HttpPost]
-        public ActionResult NuevoInvernadero(invernadero model)
+        public ActionResult NuevoInvernadero(InvernaderoViewModel model)
         {
 
             try
@@ -53,9 +50,8 @@ namespace Proyectoflores.Controllers
                     {
                         var oInvernadero = new invernadero();
 
-                        oInvernadero.numeroinvernadero = model.numeroinvernadero;
-                        oInvernadero.idfinca = model.idfinca;
-
+                        oInvernadero.numeroinvernadero = model.Numeroinvernadero;
+                        oInvernadero.idfinca = model.Idfinca;
 
                         db.invernadero.Add(oInvernadero);
                         db.SaveChanges();
@@ -73,24 +69,23 @@ namespace Proyectoflores.Controllers
         }
 
         //editar invernaderos
-        public ActionResult EditarInvernadero(int Id, int id)
+        public ActionResult EditarInvernadero(int Id)
         {
-            invernadero mod = new invernadero();
+            InvernaderoViewModel mod = new InvernaderoViewModel();
             using (proyectofloresEntities db = new proyectofloresEntities())
             {   
                 var oInvernadero = db.invernadero.Find(Id);
-                mod.numeroinvernadero = oInvernadero.numeroinvernadero;
+                mod.Numeroinvernadero = oInvernadero.numeroinvernadero;
 
-                if (id != 0)
-                    mod = db.invernadero.Where(x => x.idfinca == id).FirstOrDefault();
-                    //mod.FincaCollection = db.finca.ToList<finca>();
+                List<finca> fincaList = db.finca.ToList();
+                ViewBag.fincaList = new SelectList(fincaList, "idfinca", "nombrefinca");
 
             }
             return View(mod);
         }
 
         [HttpPost]
-        public ActionResult EditarInvernadero(invernadero model)
+        public ActionResult EditarInvernadero(InvernaderoViewModel model)
         {
             try
             {
@@ -98,10 +93,10 @@ namespace Proyectoflores.Controllers
                 {
                     using (proyectofloresEntities db = new proyectofloresEntities())
                     {
-                        var oInvernadero = db.invernadero.Find(model.idinvernadero);
+                        var oInvernadero = db.invernadero.Find(model.Idinvernadero);
 
-                        oInvernadero.numeroinvernadero = model.numeroinvernadero;
-                        oInvernadero.idfinca = model.idfinca;
+                        oInvernadero.numeroinvernadero = model.Numeroinvernadero;
+                        oInvernadero.idfinca = model.Idfinca;
 
                         db.Entry(oInvernadero).State = System.Data.Entity.EntityState.Modified;
                         db.SaveChanges();

@@ -1,25 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Recursos;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Proyectoflores.Models.ViewModelsFinca
 {
     public class FincaViewModel
     {
         public int Idfinca { get; set; }
-        [Required]
+
+        [Required(ErrorMessageResourceType = typeof(Recurso), ErrorMessageResourceName = "Finca_errorm_nombre")]
         [StringLength(50)]
-        [Display(Name = "Nombre de la finca")]
+        [Display(ResourceType = typeof(Recurso), Name = "Finca_Lista_nombre")]
+
         public string Nombrefinca { get; set; }
-        [Required]
-        [Display(Name = "Departamento")]
-        [StringLength(50)]
-        public long Iddepartamento_ { get; set; }
-        [Display(Name = "Municipio")]
-        public long Idmunicipio { get; set; }
+
+        [Display(ResourceType =typeof(Recurso), Name = "Finca_Lista_region")]
+        public int Iddepartamento { get; set; }
+
+        [Display(ResourceType = typeof(Recurso), Name = "Finca_Lista_ciudad")]
+        public int Idmunicipio { get; set; }
 
 
     }

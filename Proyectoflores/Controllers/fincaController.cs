@@ -4,7 +4,6 @@ using Proyectoflores.Models.ViewModelsFinca;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Proyectoflores.Controllers
@@ -49,31 +48,24 @@ namespace Proyectoflores.Controllers
             return View(lst);
         }
 
+        proyectofloresEntities sd = new proyectofloresEntities();
+        
         //[AuthorizeUser(idOperacion:2)]
         public ActionResult NuevaFinca()
         {
-            proyectofloresEntities sd = new proyectofloresEntities();
-            ViewBag.DeparmanetosList = new SelectList(GetDepartamentosList(), "Iddepartamento", "nombre");
+            List<departamentos> departamentosList = sd.departamentos.ToList();
+            ViewBag.departamentosList = new SelectList(departamentosList, "iddepartamento", "nombre");
             return View();
         }
 
-        public List<departamentos> GetDepartamentosList()
+        public JsonResult GetMunicipioList(int iddepartamento)
         {
-            proyectofloresEntities sd = new proyectofloresEntities();
-            List<departamentos> departamentos = sd.departamentos.ToList();
-            return departamentos;
+            sd.Configuration.ProxyCreationEnabled = false;
+            List<municipios> selectList = sd.municipios.Where(x => x.iddepartamento == iddepartamento).ToList();
+            return Json(selectList, JsonRequestBehavior.AllowGet);          
         }
 
-
-        public ActionResult GetMunicipioList(long Iddepartamento)
-        {
-            proyectofloresEntities sd = new proyectofloresEntities();
-            List<municipios> selectList = sd.municipios.Where(x => x.iddepartamento == Iddepartamento).ToList();
-            ViewBag.Mlist = new SelectList(selectList, "Idmunicipio", "nombre");
-            return PartialView("DisplayMunicipios");
-        }
-
-        [HttpPost]
+        [HttpPost]       
         public ActionResult NuevaFinca(FincaViewModel model)
         {
             try
@@ -85,7 +77,8 @@ namespace Proyectoflores.Controllers
                         var oFinca = new finca();
 
                         oFinca.nombrefinca = model.Nombrefinca;
-                        // oFinca.ubicacionf = model.Ubicacion;                 
+                        oFinca.iddepartamento_ = model.Iddepartamento;
+                        oFinca.idmunicipio = model.Idmunicipio;
 
                         db.finca.Add(oFinca);
                         db.SaveChanges();
@@ -100,7 +93,7 @@ namespace Proyectoflores.Controllers
             {
                 throw new Exception(ex.Message);
             }
-        }
+        }      
 
         //editar finca
         [AuthorizeUser(idOperacion:5)]
@@ -111,7 +104,8 @@ namespace Proyectoflores.Controllers
             {
                 var oFinca = db.finca.Find(Id);
                 model.Nombrefinca = oFinca.nombrefinca;
-                //model.Ubicacion = oFinca.ubicacionf;
+                model.Iddepartamento = oFinca.iddepartamento_;
+                model.Idmunicipio = oFinca.idmunicipio;
                 model.Idfinca = oFinca.idfinca;
             }
             return View(model);
@@ -128,7 +122,8 @@ namespace Proyectoflores.Controllers
                     {
                         var oFinca = db.finca.Find(model.Idfinca);
                         oFinca.nombrefinca = model.Nombrefinca;
-                        //oFinca.ubicacionf = model.Ubicacion;
+                        oFinca.iddepartamento_ = model.Iddepartamento;
+                        oFinca.idmunicipio = model.Idmunicipio;
 
                         db.Entry(oFinca).State = System.Data.Entity.EntityState.Modified;
                         db.SaveChanges();

@@ -11,7 +11,7 @@
 <h2>@ViewBag.Title</h2>
 
 <div class="row" style="text-align: right; padding:5px;">
-    <a href="~/finca/NuevaFinca" class="btn btn-primary">Nuevo</a>
+    <a href="~/finca/NuevaFinca" class="btn btn-primary">@Recursos.Recurso.boton_nuevo</a>
 </div>
 
 <div class="row">
@@ -32,8 +32,8 @@
                     <td>@oElemento.Iddepartamento_</td>
                     <td>@oElemento.Idmunicipio</td>
                     <td>
-                        <a class="btn btn-primary" href="~/finca/EditarFinca/@oElemento.Idfinca">Editar</a>
-                        <a class="btn btn-danger" href="~/finca/EliminarFinca/@oElemento.Idfinca">Eliminar</a>
+                        <a class="btn btn-primary" href="~/finca/EditarFinca/@oElemento.Idfinca">@Recursos.Recurso.boton_editar</a>
+                        <a class="btn btn-danger" href="~/finca/EliminarFinca/@oElemento.Idfinca">@Recursos.Recurso.boton_eliminar</a>
                     </td>
                 </tr>
 

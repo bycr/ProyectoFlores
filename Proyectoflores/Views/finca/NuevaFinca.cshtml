@@ -8,8 +8,11 @@
 
 @*NuevaFinca nombre metodo *@
 @*Finca nombre del controlador *@
+
+
 @using (Html.BeginForm("NuevaFinca", "Finca", FormMethod.Post))
 {
+
     <div class="container">
         <div class="form-group">
 
@@ -20,46 +23,43 @@
                     @Html.ValidationMessageFor(d => d.Nombrefinca)
 
                 </div>
-                @if (ViewBag.DeparmanetosList != null)
+                @if (ViewBag.departamentosList != null)
                 {
                     <div class="col-md-4">
-                        @Html.LabelFor(d => d.Iddepartamento_)
-                        @Html.DropDownListFor(m => m.Iddepartamento_, ViewBag.DeparmanetosList as SelectList, "Departamento", new { @class = "form-control" })
+                        @Html.LabelFor(d => d.Iddepartamento)
+                        @Html.DropDownListFor(m => m.Iddepartamento, ViewBag.departamentosList as SelectList, Recursos.Recurso.Finca_desplegable_departamento, new { @class = "form-control" })
                     </div>
                 }
                 <div class="col-md-4">
                     @Html.LabelFor(d => d.Idmunicipio)
-                    @Html.DropDownListFor(m => m.Idmunicipio, new SelectList(""), "Municipio", new { @class = "form-control" })
+                    @Html.DropDownListFor(m => m.Idmunicipio, new SelectList(""), Recursos.Recurso.Finca_desplegable_municipio, new { @class = "form-control" })
                 </div>
+                <br />
             </div>
+            <br />
         </div>
-        <br />
     </div>
 
     <div style="text-align:right">
-        <input value="Guardar" class="btn btn-primary" type="submit" />
+        <input value="@Recursos.Recurso.boton_guardar" class="btn btn-primary" type="submit" />
     </div>
+
 }
 
-
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script>
-    
+
     $(document).ready(function () {
-        $("#Iddepartamento_").change(function () {
-            var departamentoid = $(this).val();
-            debugger
-            $.ajax({
-                type: "post",
-                url: "/Finca/GetMunicipioList?Iddepartamento_=" + departamentoid,
-                contentType: "html",
-                success: function (response) {
-                    debugger
-                    $("#Idmunicipio").empty();
-                    $("#Idmunicipio").append(response);
-                }
-            })
+        $("#Iddepartamento").change(function () {
+            $.get("/Finca/GetMunicipioList", { iddepartamento: $("#Iddepartamento").val() }, function (data) {
+
+                $("#Idmunicipio").empty();
+                $.each(data, function (Finca, row) {
+                    $("#Idmunicipio").append("<option value='" + row.idmunicipio + "'>" + row.nombre + "</option>")
+                        
+                });
+            });
         })
-    })
+    });
 
 </script>

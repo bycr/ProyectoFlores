@@ -124,6 +124,69 @@ namespace Recursos {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Editar.
+        /// </summary>
+        public static string boton_editar {
+            get {
+                return ResourceManager.GetString("boton_editar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Eliminar.
+        /// </summary>
+        public static string boton_eliminar {
+            get {
+                return ResourceManager.GetString("boton_eliminar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Guardar.
+        /// </summary>
+        public static string boton_guardar {
+            get {
+                return ResourceManager.GetString("boton_guardar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nuevo.
+        /// </summary>
+        public static string boton_nuevo {
+            get {
+                return ResourceManager.GetString("boton_nuevo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a seleccione un departamento.
+        /// </summary>
+        public static string Finca_desplegable_departamento {
+            get {
+                return ResourceManager.GetString("Finca_desplegable_departamento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a seleccione un municipio.
+        /// </summary>
+        public static string Finca_desplegable_municipio {
+            get {
+                return ResourceManager.GetString("Finca_desplegable_municipio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El campo {0} es requerido.
+        /// </summary>
+        public static string Finca_errorm_nombre {
+            get {
+                return ResourceManager.GetString("Finca_errorm_nombre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Municipio.
         /// </summary>
         public static string Finca_Lista_ciudad {
@@ -190,6 +253,60 @@ namespace Recursos {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a El campo {1} es requerido.
+        /// </summary>
+        public static string Invernadero_errorm_idfinca {
+            get {
+                return ResourceManager.GetString("Invernadero_errorm_idfinca", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El campo {0} es requerido.
+        /// </summary>
+        public static string Invernadero_errorm_numero {
+            get {
+                return ResourceManager.GetString("Invernadero_errorm_numero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Finca.
+        /// </summary>
+        public static string Invernadero_finca {
+            get {
+                return ResourceManager.GetString("Invernadero_finca", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Id.
+        /// </summary>
+        public static string Invernadero_id {
+            get {
+                return ResourceManager.GetString("Invernadero_id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Número invernadero.
+        /// </summary>
+        public static string Invernadero_numero {
+            get {
+                return ResourceManager.GetString("Invernadero_numero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Seleccione una finca.
+        /// </summary>
+        public static string Invernadero_seleccionable {
+            get {
+                return ResourceManager.GetString("Invernadero_seleccionable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a acceder.
         /// </summary>
         public static string Login_boton_acceso {
@@ -208,7 +325,7 @@ namespace Recursos {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a usuario.
+        ///   Busca una cadena traducida similar a Usuario.
         /// </summary>
         public static string Login_usuario {
             get {
