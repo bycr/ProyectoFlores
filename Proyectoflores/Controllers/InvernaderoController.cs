@@ -71,14 +71,16 @@ namespace Proyectoflores.Controllers
         //editar invernaderos
         public ActionResult EditarInvernadero(int Id)
         {
+            List<finca> fincaList = sd.finca.ToList();
+            ViewBag.fincaList = new SelectList(fincaList, "idfinca", "nombrefinca");
+
             InvernaderoViewModel mod = new InvernaderoViewModel();
             using (proyectofloresEntities db = new proyectofloresEntities())
             {   
                 var oInvernadero = db.invernadero.Find(Id);
+                mod.Idinvernadero = oInvernadero.idinvernadero;
                 mod.Numeroinvernadero = oInvernadero.numeroinvernadero;
-
-                List<finca> fincaList = db.finca.ToList();
-                ViewBag.fincaList = new SelectList(fincaList, "idfinca", "nombrefinca");
+                mod.Idfinca = oInvernadero.idfinca;
 
             }
             return View(mod);
@@ -94,7 +96,7 @@ namespace Proyectoflores.Controllers
                     using (proyectofloresEntities db = new proyectofloresEntities())
                     {
                         var oInvernadero = db.invernadero.Find(model.Idinvernadero);
-
+                        oInvernadero.idinvernadero = model.Idinvernadero;
                         oInvernadero.numeroinvernadero = model.Numeroinvernadero;
                         oInvernadero.idfinca = model.Idfinca;
 

@@ -130,6 +130,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccesoController.cs" />
+    <Compile Include="Controllers\BloqueController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FincaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -188,6 +189,8 @@
     <Compile Include="Models\usuario.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModelBloque\BloqueViewModel.cs" />
+    <Compile Include="Models\ViewModelBloque\ListBloqueViewModel.cs" />
     <Compile Include="Models\ViewModelInvernadero\InvernaderoViewModel.cs" />
     <Compile Include="Models\ViewModelInvernadero\ListInvernaderoViewModel.cs" />
     <Compile Include="Models\ViewModelsFinca\FincaViewModel.cs" />
@@ -275,6 +278,8 @@
     <Content Include="Views\Usuario\NuevoUsuario.cshtml" />
     <Content Include="Views\Usuario\EditarUsuario.cshtml" />
     <Content Include="Views\Error\UnauthorizedOperation.cshtml" />
+    <Content Include="Views\Bloque\ListaBloque.cshtml" />
+    <Content Include="Views\Bloque\NuevoBloque.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

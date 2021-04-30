@@ -332,5 +332,68 @@ namespace Recursos {
                 return ResourceManager.GetString("Login_usuario", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Seleccione un rol.
+        /// </summary>
+        public static string Seleccionable_rol {
+            get {
+                return ResourceManager.GetString("Seleccionable_rol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Apellidos.
+        /// </summary>
+        public static string Usuario_apellidos {
+            get {
+                return ResourceManager.GetString("Usuario_apellidos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cédula.
+        /// </summary>
+        public static string Usuario_cedula {
+            get {
+                return ResourceManager.GetString("Usuario_cedula", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Contraseña.
+        /// </summary>
+        public static string Usuario_contraseña {
+            get {
+                return ResourceManager.GetString("Usuario_contraseña", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Correo electrónico.
+        /// </summary>
+        public static string Usuario_correo {
+            get {
+                return ResourceManager.GetString("Usuario_correo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nombres.
+        /// </summary>
+        public static string Usuario_nombres {
+            get {
+                return ResourceManager.GetString("Usuario_nombres", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Rol de usuario.
+        /// </summary>
+        public static string Usuario_rol {
+            get {
+                return ResourceManager.GetString("Usuario_rol", resourceCulture);
+            }
+        }
     }
 }

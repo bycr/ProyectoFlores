@@ -1,10 +1,4 @@
-﻿using Proyectoflores.Models.ViewModelsFinca;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Proyectoflores.Models.ViewModelUsuario
+﻿namespace Proyectoflores.Models.ViewModelUsuario
 {
     public class ListUsuarioViewModel
     {
@@ -14,9 +8,8 @@ namespace Proyectoflores.Models.ViewModelUsuario
         public string Apellidos { get; set; }
         public int Idrol { get; set; }
         public int Idfinca { get; set; }
-
-        public virtual FincaViewModel fincaViewModel { get; set; }
-        public virtual rol rol { get; set; }
-
+        public string Email { get; set; }
+        public string Token { get; set; }
+        
     }
 }

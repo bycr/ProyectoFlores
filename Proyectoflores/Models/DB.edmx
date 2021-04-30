@@ -107,6 +107,8 @@
           <Property Name="apellidos" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="idrol" Type="int" Nullable="false" />
           <Property Name="idfinca" Type="int" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="token" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="fk_cedula">
           <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
@@ -526,6 +528,8 @@
           <NavigationProperty Name="bloque" Relationship="proyectofloresModel.fk_cedula" FromRole="usuario" ToRole="bloque" />
           <NavigationProperty Name="finca" Relationship="proyectofloresModel.fk_idfinca2" FromRole="usuario" ToRole="finca" />
           <NavigationProperty Name="rol" Relationship="proyectofloresModel.fk_rol" FromRole="usuario" ToRole="rol" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="token" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="fk_cedula">
           <End Type="proyectofloresModel.usuario" Role="usuario" Multiplicity="1" />
@@ -794,6 +798,8 @@
           <EntitySetMapping Name="usuario">
             <EntityTypeMapping TypeName="proyectofloresModel.usuario">
               <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="idfinca" ColumnName="idfinca" />
                 <ScalarProperty Name="idrol" ColumnName="idrol" />
                 <ScalarProperty Name="apellidos" ColumnName="apellidos" />

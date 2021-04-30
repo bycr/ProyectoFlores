@@ -207,4 +207,25 @@
   <data name="Invernadero_seleccionable" xml:space="preserve">
     <value>Select a farm</value>
   </data>
+  <data name="Usuario_apellidos" xml:space="preserve">
+    <value>Surnames</value>
+  </data>
+  <data name="Usuario_cedula" xml:space="preserve">
+    <value>Identification card</value>
+  </data>
+  <data name="Usuario_correo" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Usuario_nombres" xml:space="preserve">
+    <value>Names</value>
+  </data>
+  <data name="Usuario_rol" xml:space="preserve">
+    <value>User role</value>
+  </data>
+  <data name="Seleccionable_rol" xml:space="preserve">
+    <value>select a role</value>
+  </data>
+  <data name="Usuario_contraseña" xml:space="preserve">
+    <value>Password</value>
+  </data>
 </root>

@@ -1,0 +1,104 @@
+﻿@model Proyectoflores.Models.ViewModelBloque.BloqueViewModel
+@{
+    ViewBag.Title = "NuevoBloque";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("NuevoProdBloque", "producbloque", FormMethod.Post))
+{
+    <div class="container">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-12 text-md-center">
+                    <b> <label> Datos al Año</label> </b>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <b><label class="text-center">Presupuestado </label></b>
+                        @Html.TextBoxFor(d => d.Presupuestadoaño, "", new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-4">
+                        <b><label class="text-center">Llevamos</label></b>
+                        @Html.TextBoxFor(d => d.Llevamosaño, "", new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-group">
+            <div class="row">
+
+                <div class="col-md-12 text-md-center">
+                    <b> <label> Datos al Mes</label> </b>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <b><label class="text-center">Presupuestado </label></b>
+                        @Html.TextBoxFor(d => d.Presupuestadomes, "", new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-4">
+                        <b><label class="text-center">Llevamos </label></b>
+                        @Html.TextBoxFor(d => d.Llevamosmes, "", new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-group">
+            <div class="row">
+
+                <div class="col-md-12 text-md-center">
+                    <b> <label> Datos adicionales</label> </b>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <b><label class="text-center">Numero bloque </label></b>
+                        @Html.TextBoxFor(d => d.Numerobloque, "", new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-4">
+                        <b><label class="text-center">Cedula  </label></b>
+                        @Html.TextBoxFor(d => d.Cedula, "", new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-group">
+            <div class="row">
+
+                <div class="col-md-12 text-md-center">
+                    <b> <label> Datos Ubicación</label> </b>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <b>@Html.LabelFor(d => d.Idfinca)</b>
+                        @Html.DropDownListFor(d => d.Idfinca, ViewBag.fincaList as SelectList, Recursos.Recurso.Invernadero_seleccionable, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-4">
+                        <b><label class="text-center">dato invernadero </label></b>
+
+                        @Html.TextBoxFor(d => d.Idinvernadero, "", new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align:right">
+        <input value="@Recursos.Recurso.boton_guardar" class="btn btn-primary" type="submit" />
+    </div>
+}
+
+

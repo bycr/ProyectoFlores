@@ -1,11 +1,5 @@
-﻿using Proyectoflores.Models.ViewModelsFinca;
-using Recursos;
-using System;
-using System.Collections.Generic;
+﻿using Recursos;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace Proyectoflores.Models.ViewModelInvernadero
 {

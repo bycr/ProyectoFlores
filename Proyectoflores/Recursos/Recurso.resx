@@ -210,4 +210,25 @@ referencia, por favor salga del sistema y no haga mal uso de esta aplicación we
   <data name="Invernadero_seleccionable" xml:space="preserve">
     <value>Seleccione una finca</value>
   </data>
+  <data name="Usuario_apellidos" xml:space="preserve">
+    <value>Apellidos</value>
+  </data>
+  <data name="Usuario_cedula" xml:space="preserve">
+    <value>Cédula</value>
+  </data>
+  <data name="Usuario_correo" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="Usuario_nombres" xml:space="preserve">
+    <value>Nombres</value>
+  </data>
+  <data name="Usuario_rol" xml:space="preserve">
+    <value>Rol de usuario</value>
+  </data>
+  <data name="Seleccionable_rol" xml:space="preserve">
+    <value>Seleccione un rol</value>
+  </data>
+  <data name="Usuario_contraseña" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
 </root>

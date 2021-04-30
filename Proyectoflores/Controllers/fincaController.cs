@@ -96,17 +96,20 @@ namespace Proyectoflores.Controllers
         }      
 
         //editar finca
-        [AuthorizeUser(idOperacion:5)]
+        //[AuthorizeUser(idOperacion:5)]
         public ActionResult EditarFinca(int Id)
         {
+            List<departamentos> departamentosList = sd.departamentos.ToList();
+            ViewBag.departamentosList = new SelectList(departamentosList, "iddepartamento", "nombre");
+
             FincaViewModel model = new FincaViewModel();
             using (proyectofloresEntities db = new proyectofloresEntities())
             {
                 var oFinca = db.finca.Find(Id);
+                model.Idfinca = oFinca.idfinca;
                 model.Nombrefinca = oFinca.nombrefinca;
                 model.Iddepartamento = oFinca.iddepartamento_;
                 model.Idmunicipio = oFinca.idmunicipio;
-                model.Idfinca = oFinca.idfinca;
             }
             return View(model);
         }
@@ -121,6 +124,7 @@ namespace Proyectoflores.Controllers
                     using (proyectofloresEntities db = new proyectofloresEntities())
                     {
                         var oFinca = db.finca.Find(model.Idfinca);
+                        oFinca.idfinca = model.Idfinca;
                         oFinca.nombrefinca = model.Nombrefinca;
                         oFinca.iddepartamento_ = model.Iddepartamento;
                         oFinca.idmunicipio = model.Idmunicipio;
