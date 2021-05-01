@@ -9,6 +9,22 @@ namespace Proyectoflores.Controllers
 {
     public class InvernaderoController : Controller
     {
+        public static string vistalistaInvernadero()
+        {
+            return "lst";
+        }
+        public static string vistaNuevoInvernadero()
+        {
+            return "model";
+        }
+        public static string vistaEditarInvernadero()
+        {
+            return "mod";
+        }
+        public static string vistaEliminarInvernadero()
+        {
+            return "view";
+        }
         // GET: Invernadero
         public ActionResult ListaInvernadero()
         {

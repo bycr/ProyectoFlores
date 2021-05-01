@@ -9,6 +9,22 @@ namespace Proyectoflores.Controllers
 {
     public class BloqueController : Controller
     {
+        public static string listaBloque()
+        {
+            return "lst";
+        }
+        public static string nuevoBloque()
+        {
+            return "lst";
+        }
+        public static string editarBloque()
+        {
+            return "model";
+        }
+        public static string eliminarBloque()
+        {
+            return "bloque";
+        }
         // GET: Bloque
         public ActionResult ListaBloque()
         {

@@ -8,6 +8,18 @@ namespace Proyectoflores.Controllers
 {
     public class HomeController : Controller
     {
+        public static string vistaindex()
+        {
+            return "view";
+        }
+        public static string vistaabout()
+        {
+            return "view";
+        }
+        public static string vistacontact()
+        {
+            return "view";
+        }
         public ActionResult Index()
         {
             return View();
