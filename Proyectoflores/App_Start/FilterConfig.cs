@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Proyectoflores
 {
@@ -8,7 +7,7 @@ namespace Proyectoflores
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            //filters.Add(new Filters.VerificaSession());
+            filters.Add(new Filters.VerificaSession());
         }
     }
 }

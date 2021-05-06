@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Proyectoflores.Models;
+using Proyectoflores.Models.ViewModelAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,9 +19,11 @@ namespace Proyectoflores.Controllers
         [HttpPost]
         public ActionResult Login(int User, string Pass)
         {
+            Reply oR = new Reply();
+
             try
             {
-                using (Models.proyectofloresEntities db = new Models.proyectofloresEntities())
+                using (proyectofloresEntities db = new proyectofloresEntities())
                 {
                     var oUser = (from d in db.usuario
                                  where d.cedula == User && d.password == Pass.Trim()
@@ -28,8 +32,8 @@ namespace Proyectoflores.Controllers
                     {
                         ViewBag.Error = "Usuario o contraseña invalida";
                         return View();
-                    }
-
+                    }              
+                                                          
                     //creamos la sesion del usuario
                     Session["User"] = oUser;
 
