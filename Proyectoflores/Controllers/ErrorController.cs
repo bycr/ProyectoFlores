@@ -8,6 +8,10 @@ namespace Proyectoflores.Controllers
 {
     public class ErrorController : Controller
     {
+        public static string errorview()
+        {
+            return "view";
+        }
         // GET: Error
         [HttpGet]
         public ActionResult UnauthorizedOperation(String operacion, String modulo, String msjeErrorExcepcion)

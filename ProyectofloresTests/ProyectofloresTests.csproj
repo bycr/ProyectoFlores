@@ -70,6 +70,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccesoControllerTests.cs" />
+    <Compile Include="BloqueControllerTests.cs" />
+    <Compile Include="ErrorControllerTests.cs" />
+    <Compile Include="UsuarioControllerTests.cs" />
+    <Compile Include="InvernaderoControllerTests.cs" />
+    <Compile Include="HomeControllerTests.cs" />
     <Compile Include="FincaControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -10,6 +10,11 @@ namespace Proyectoflores.Controllers
 {
     public class AccesoController : Controller
     {
+        public static string login()
+        {
+            return "index";
+        }
+
         // GET: Accesso
         public ActionResult Login()
         {

@@ -10,6 +10,22 @@ namespace Proyectoflores.Controllers
 {
     public class UsuarioController : Controller
     {
+        public static string vistalistaUsuario()
+        {
+            return "lst";
+        }
+        public static string vistaNuevoUsuario()
+        {
+            return "model";
+        }
+        public static string vistaEditarUsuario()
+        {
+            return "mod";
+        }
+        public static string vistaEliminarUsuario()
+        {
+            return "view";
+        }
         // GET: Usuario
         public ActionResult ListaUsuario()
         {
